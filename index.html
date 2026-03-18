@@ -32,7 +32,39 @@
       display: flex; flex-direction: column; align-items: center; gap: 14px;
     }
 
-    .header-logo img { height: 60px; width: auto; }
+    .header-logo {
+      position: relative;
+      padding: 14px 28px;
+      border-radius: 16px;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%,
+        rgba(250,168,4,.22) 0%,
+        rgba(250,168,4,.10) 45%,
+        transparent 100%);
+      box-shadow:
+        0 0 32px 8px rgba(250,168,4,.18),
+        0 0 8px  2px rgba(250,168,4,.12);
+    }
+
+    /* animated shiny sweep */
+    .header-logo::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 16px;
+      background: linear-gradient(115deg,
+        transparent 30%,
+        rgba(255,220,80,.18) 50%,
+        transparent 70%);
+      background-size: 200% 100%;
+      animation: logoShine 3s ease-in-out infinite;
+    }
+
+    @keyframes logoShine {
+      0%   { background-position: 200% 0; }
+      50%  { background-position: -50%  0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .header-logo img { height: 68px; width: auto; position: relative; z-index: 1; filter: drop-shadow(0 0 6px rgba(250,168,4,.35)); }
 
     .header-tag {
       background: var(--gold); color: var(--black);
@@ -211,8 +243,36 @@
     #ok a { color: var(--gold); text-decoration: none; }
 
     /* ── FOOTER ──────────────────────────────── */
-    footer { background: var(--black); text-align: center; padding: 18px; font-size: 11.5px; color: rgba(255,255,255,.35); }
-    footer a { color: var(--gold); text-decoration: none; }
+    footer { background: var(--black); color: rgba(255,255,255,.4); font-size: 11.5px; }
+
+    .footer-contact {
+      border-top: 1px solid rgba(255,255,255,.08);
+      max-width: 860px; margin: 0 auto;
+      padding: 32px 24px 24px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px;
+    }
+
+    .fc-item {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,.75);
+      text-decoration: none; transition: color .18s;
+    }
+    .fc-item:hover { color: var(--gold); }
+    .fc-item:hover .fc-icon { background: var(--gold); }
+
+    .fc-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0; transition: background .18s;
+    }
+
+    .footer-copy {
+      text-align: center; padding: 14px 24px 20px;
+      font-size: 11px; color: rgba(255,255,255,.25);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-copy a { color: var(--gold); text-decoration: none; }
 
     /* ── TOTAL BAR ───────────────────────────── */
     .total-bar {
@@ -990,7 +1050,26 @@
 </div><!-- /wrap -->
 
 <footer>
-  <p>© 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Servicios para Ferias y Eventos · IFEMACC 2026</p>
+  <div class="footer-contact">
+    <a class="fc-item" href="tel:+34919930393">
+      <span class="fc-icon">📞</span> 91 993 03 93
+    </a>
+    <a class="fc-item" href="mailto:info@gribeer.com">
+      <span class="fc-icon">✉️</span> info@gribeer.com
+    </a>
+    <a class="fc-item" href="https://gribeer.com" target="_blank">
+      <span class="fc-icon">🌐</span> www.gribeer.com
+    </a>
+    <a class="fc-item" href="https://www.instagram.com/gribeer_" target="_blank">
+      <span class="fc-icon">📷</span> @gribeer_
+    </a>
+    <a class="fc-item" href="https://www.linkedin.com/company/gribeer" target="_blank">
+      <span class="fc-icon">💼</span> Gribeer Eventos
+    </a>
+  </div>
+  <div class="footer-copy">
+    © 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Servicios para Ferias y Eventos · IFEMACC 2026
+  </div>
 </footer>
 
 <script>
