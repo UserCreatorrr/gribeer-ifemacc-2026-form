@@ -1133,13 +1133,15 @@
       total.toLocaleString('es-ES') + ' €';
   }
 
-  // Show total bar once contact section scrolls out of view
+  // Show total bar once contact section scrolls out of view — stays visible permanently
   var totalBar = document.querySelector('.total-bar');
   var contactCard = document.getElementById('contacto-card');
   var observer = new IntersectionObserver(function(entries) {
-    // When contact card is NOT intersecting (user scrolled past it), show bar
-    totalBar.classList.toggle('visible', !entries[0].isIntersecting);
-  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+    if (!entries[0].isIntersecting) {
+      totalBar.classList.add('visible');
+      observer.disconnect(); // stay visible forever after
+    }
+  }, { threshold: 0 });
   observer.observe(contactCard);
 
   // radio pills for grifo
