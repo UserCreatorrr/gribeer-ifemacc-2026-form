@@ -230,13 +230,6 @@
       background-repeat: no-repeat;
       background-position: right 13px center;
       padding-right: 34px;
-      accent-color: var(--gold);
-    }
-
-    .f select option:checked,
-    .f select option:focus {
-      background: var(--gold);
-      color: var(--black);
     }
 
     /* ── DIVIDER ─────────────────────────────── */
@@ -939,41 +932,62 @@
 
           <hr class="hr" />
 
-          <div class="g2">
-            <div class="f"><label>Pack de barriles</label>
-              <select name="barril_pack" data-price="1">
-                <option value="0|Sin barriles">Sin barriles</option>
-                <option value="198|Grifo + 1 Barril 30L – 198€">Grifo + 1 Barril 30L – 198€</option>
-                <option value="276|Grifo + 2 Barriles 30L – 276€">Grifo + 2 Barriles 30L – 276€</option>
-              </select>
+          <div class="f full"><label>Pack de barriles</label>
+            <div class="pills" style="margin-top:6px;">
+              <div class="pill"><input type="radio" name="barril_pack" id="bp0" value="0|Sin barriles" checked /><label
+                  for="bp0">Sin barriles</label></div>
+              <div class="pill"><input type="radio" name="barril_pack" id="bp1"
+                  value="198|Grifo + 1 Barril 30L – 198€" /><label for="bp1">Grifo + 1 Barril 30L
+                  &nbsp;<strong>198€</strong></label></div>
+              <div class="pill"><input type="radio" name="barril_pack" id="bp2"
+                  value="276|Grifo + 2 Barriles 30L – 276€" /><label for="bp2">Grifo + 2 Barriles 30L
+                  &nbsp;<strong>276€</strong></label></div>
             </div>
+          </div>
+
+          <div class="g2" style="margin-top:14px;">
             <div class="f"><label>Barriles adicionales (30L · 138€ c/u)</label>
-              <select name="barril_extra" data-price="138">
-                <option value="0">0 barriles adicionales</option>
-                <option value="1">+1 barril – 138€</option>
-                <option value="2">+2 barriles – 276€</option>
-                <option value="3">+3 barriles – 414€</option>
-                <option value="4">+4 barriles – 552€</option>
-                <option value="5">+5 barriles – 690€</option>
-              </select>
+              <div class="pills" style="margin-top:6px;">
+                <div class="pill"><input type="radio" name="barril_extra" id="be0" value="0" checked /><label
+                    for="be0">Ninguno</label></div>
+                <div class="pill"><input type="radio" name="barril_extra" id="be1" value="1" /><label for="be1">+1
+                    &nbsp;<strong>138€</strong></label></div>
+                <div class="pill"><input type="radio" name="barril_extra" id="be2" value="2" /><label for="be2">+2
+                    &nbsp;<strong>276€</strong></label></div>
+                <div class="pill"><input type="radio" name="barril_extra" id="be3" value="3" /><label for="be3">+3
+                    &nbsp;<strong>414€</strong></label></div>
+                <div class="pill"><input type="radio" name="barril_extra" id="be4" value="4" /><label for="be4">+4
+                    &nbsp;<strong>552€</strong></label></div>
+                <div class="pill"><input type="radio" name="barril_extra" id="be5" value="5" /><label for="be5">+5
+                    &nbsp;<strong>690€</strong></label></div>
+              </div>
             </div>
             <div class="f"><label>Marca de cerveza</label>
               <select name="marca_cerveza">
-                <option value="">Selecciona...</option>
+                <option value="">Indiferente</option>
                 <option>Mahou</option>
                 <option>Alhambra</option>
                 <option>Estrella Galicia</option>
-                <option>Indiferente</option>
               </select>
             </div>
-            <div class="f"><label>Pack de vasos</label>
-              <select name="pack_vasos" data-price="1">
-                <option value="0|Sin vasos">Sin vasos</option>
-                <option value="25|Pack 100 vasos 0,33cl – 25€">Pack 100 vasos 0,33cl – 25€</option>
-                <option value="35|Pack 150 vasos 0,33cl – 35€">Pack 150 vasos 0,33cl – 35€</option>
-                <option value="40|Pack 200 vasos 0,33cl – 40€">Pack 200 vasos 0,33cl – 40€</option>
-                <option value="0|Vasos de cristal (presupuesto)">Vasos de cristal (presupuesto)</option>
-              </select>
+          </div>
+
+          <div class="f full" style="margin-top:14px;"><label>Pack de vasos</label>
+            <div class="pills" style="margin-top:6px;">
+              <div class="pill"><input type="radio" name="pack_vasos" id="pv0" value="0|Sin vasos" checked /><label
+                  for="pv0">Sin vasos</label></div>
+              <div class="pill"><input type="radio" name="pack_vasos" id="pv1"
+                  value="25|Pack 100 vasos 0,33cl – 25€" /><label for="pv1">100 vasos 0,33cl
+                  &nbsp;<strong>25€</strong></label></div>
+              <div class="pill"><input type="radio" name="pack_vasos" id="pv2"
+                  value="35|Pack 150 vasos 0,33cl – 35€" /><label for="pv2">150 vasos 0,33cl
+                  &nbsp;<strong>35€</strong></label></div>
+              <div class="pill"><input type="radio" name="pack_vasos" id="pv3"
+                  value="40|Pack 200 vasos 0,33cl – 40€" /><label for="pv3">200 vasos 0,33cl
+                  &nbsp;<strong>40€</strong></label></div>
+              <div class="pill"><input type="radio" name="pack_vasos" id="pv4"
+                  value="0|Vasos de cristal (presupuesto)" /><label for="pv4">Vasos de cristal (presupuesto)</label>
+              </div>
             </div>
           </div>
 
@@ -1969,115 +1983,127 @@
   </footer>
 
   <script>
-  /I    M toggle ─────────────────────── */
-  document.que    SelectorAll('.prod-item').forEach(item => {
-    item.addEv      istener('click', () => {
-      const cb        m.querySelector('input[type="checkbox"]');
-      cb.check        cb.checked;
-      item.cla        .toggle('selected', cb.checked);
-      updateTo        
-    });
-  });
-      * ──    ELECT    rice parser ─────────────────── */
-  document.que    SelectorAll('select[data-price]').forEach(sel => {
-    sel.addEventListener('change', updateTotal);
-  });
-
-        ─ TOTAL ────────────────────────────────── */
-  function up    teTotal() {
-    let total = 0;
-
-    // prod-items
-      document.querySelectorA      .prod-item input      e="checkbox"]:      ked').forEach(cb => {
-      total += parseInt(cb.dataset.price || 0, 10);
+    /* ── PROD-ITEM toggle ─────────────────────── */
+    document.querySelectorAll('.prod-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const cb = item.querySelector('input[type="checkbox"]');
+        cb.checked = !cb.checked;
+        item.classList.toggle('selected', cb.checked);
+        updateTotal();
+      });
     });
 
-            ects with data-price="1" (value encodes price       price      el")
-    document.querySelectorAll('select[data-p      ="1"]').forEach (sel => {
-      const val = sel.        split('|')[0];
-      total += parseInt(val || 0, 10);
-    });
+    /* ── SELECT price parser ─────────────────── */
+    document.querySelectorAll('input[name="barril_pack"], input[name="barril_extra"], input[name="pack_vasos"]')
+      .forEach(r => r.addEventListener('change', updateTotal));
 
-    // bar        tra: value is count, multiply by 138
-    const extra = document.querySelec      'sele      ame="barril_extra"]');
-    if (extra) total += parseInt(      a.value || 0, 10) * 138;
+    /* ── TOTAL ────────────────────────────────── */
+    function updateTotal() {
+      let total = 0;
 
-    // grifo supplement
-    const grifoTipo = docum      querySelector('input[name="grifo_tipo"]:checked');
-    if (gr      ipo) {
-      if (gri      po.value.includes('65')) total += 65;
-      if (grifoTipo.value.includes('130'      otal += 130;
-             document.getElementById('total-display').textCon        
-      total.toLocaleString('es-ES') + ' €';
-  }
+      // prod-items
+      document.querySelectorAll('.prod-item input[type="checkbox"]:checked').forEach(cb => {
+        total += parseInt(cb.dataset.price || 0, 10);
+      });
 
-       Sho      tal bar only AFTER contact card has been seen and scrol        st
-  var totalBar = document.querySele    or(    total-bar');
-  var contactCard = document.getElementById('contacto-card');     var contactSeen = false;
-  var observer = new Inters    tionObserver(function(entries) {
-    if (entries[0].isInters    ting) {
-      contactSeen     true; // card entered the viewport
-    } else i f (contactSe      {
-      totalBar.classList.add('v        '); // card left after being seen → show bar
-          server.disconnect();
-    }        { threshold: 0 });
-  observer.observe(contactCard);
+      // radio groups with encoded price "price|label"
+      ['barril_pack', 'pack_vasos'].forEach(name => {
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        if (checked) total += parseInt((checked.value || '0').split('|')[0], 10);
+      });
 
-  // radio pills for gr        document.querySelectorA      in    t[name="grifo_tipo"]')    orEach(r => r.addEventListener('    ange', updateTotal));
+      // barril_extra radios: value is count, multiply by 138
+      const extraR = document.querySelector('input[name="barril_extra"]:checked');
+      if (extraR) total += parseInt(extraR.value || 0, 10) * 138;
 
-       ── FORM SUBMIT ─────────────────────────── */
-  document.getElementById('gf').addEventListener('submit', async     nction(e) {
-    e.preventDefault();
-    const btn     document.getElementById('submit-btn');
+      // grifo supplement
+      const grifoTipo = document.querySelector('input[name="grifo_tipo"]:checked');
+      if (grifoTipo) {
+        if (grifoTipo.value.includes('65')) total += 65;
+        if (grifoTipo.value.includes('130')) total += 130;
+      }
 
-    // Validate required
-    c onst r      = this.querySelector      '[required]');
-    let ok = true;
-    reqs.forEach(e       {
-      el.style.bor      olor = '';
-      if (el.type === 'checkbox' && !el      cked) { ok = fa       }
-      else if (el.        == 'checkbox' && !el.value.        ) { el.style.borderColor = '#e53e3e'; ok = false; }
-    });        f (!ok) { alert('Por favor, completa todos los campos obligatorios.'); return; }
-
-    btn.disabled = tr      btn.      Content = 'Enviando...';
-
-    // Build payload
-    const fd = new FormData(this);
-       onst data = { timestamp: new Date().toISOString(), fuen      'Formulario Servi       2026 – Gribeer' };
-
-    // sca      fields
-    ['nombre','apellidos','empresa','cargo','email','telefono','stand','fechas',
-     'grifo_ti      'marca_cerveza','      il_pack',' pack_vasos', 'notas','c omo_cono ciste',' cliente']
-       .fo rEach(k =>        ta[k] = fd.ge t(k) || ''; });
- 
-    // barril  extra
-    co nst extr aSel = this.query Selector('s        name="barril_extra"]');
-    data.barril_extra =       aSel ? extraSel.value +       rriles adicionales' : '';
-
-    // extras checkboxes
-    data.logo_grifo        this.querySelector('[name="ext_logo_grifo"]:checked')  ? 'Sí' : 'No';
-    data.camareros     = th      uerySelector('[name="      camareros"]:che ')   ? 'Sí' : 'No';
-    data.privacidad    = this.query lector('[name="      ta_privacidad" cked') ? 'Aceptada' : 'No';
-
-    // product selections   ['beb','mob',      d','av','acc']. ach(name => {
-      const selected = [...this.querySelectorAll(`input[name="${nam      :checked`)].map(c => c      ue);
-       da ta['pro ducto s_' + name] = selected.jo         ') || 'Ninguno';
-    });
-
-    // total
-    data.presupuesto_estimado = document.getElementById(        -display').textContent;
-
-    try {
-      await fetch('/api/subm       {
-          method:      ST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.st      ify(da            });
-      this.style.display = 'none'          const msg = docu          ElementById('ok');
-      msg.style.display = 'blo             msg.scrollIntoView({ beh         'sm        });
-    } catch {
-      btn.disabled = false; btn.te        ent = 'Solicitar Presupuesto             alert('Error al enviar. Por favor, inté        de nuevo.');
+      document.getElementById('total-display').textContent =
+        total.toLocaleString('es-ES') + ' €';
     }
-  });
+
+    // Show total bar only AFTER contact card has been seen and scrolled past
+    var totalBar = document.querySelector('.total-bar');
+    var contactCard = document.getElementById('contacto-card');
+    var contactSeen = false;
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        contactSeen = true; // card entered the viewport
+      } else if (contactSeen) {
+        totalBar.classList.add('visible'); // card left after being seen → show bar
+        observer.disconnect();
+      }
+    }, { threshold: 0 });
+    observer.observe(contactCard);
+
+    // radio pills for grifo
+    document.querySelectorAll('input[name="grifo_tipo"]').forEach(r => r.addEventListener('change', updateTotal));
+
+    /* ── FORM SUBMIT ─────────────────────────── */
+    document.getElementById('gf').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+
+      // Validate required
+      const reqs = this.querySelectorAll('[required]');
+      let ok = true;
+      reqs.forEach(el => {
+        el.style.borderColor = '';
+        if (el.type === 'checkbox' && !el.checked) { ok = false; }
+        else if (el.type !== 'checkbox' && !el.value.trim()) { el.style.borderColor = '#e53e3e'; ok = false; }
+      });
+      if (!ok) { alert('Por favor, completa todos los campos obligatorios.'); return; }
+
+      btn.disabled = true; btn.textContent = 'Enviando...';
+
+      // Build payload
+      const fd = new FormData(this);
+      const data = { timestamp: new Date().toISOString(), fuente: 'Formulario Servicios 2026 – Gribeer' };
+
+      // scalar fields
+      ['nombre', 'apellidos', 'empresa', 'cargo', 'email', 'telefono', 'stand', 'fechas',
+        'grifo_tipo', 'marca_cerveza', 'barril_pack', 'pack_vasos', 'notas', 'como_conociste', 'cliente']
+        .forEach(k => { data[k] = fd.get(k) || ''; });
+
+      // barril extra (radio)
+      const extraR = this.querySelector('input[name="barril_extra"]:checked');
+      data.barril_extra = extraR ? extraR.value + ' barriles adicionales' : '0 barriles adicionales';
+
+      // extras checkboxes
+      data.logo_grifo = this.querySelector('[name="ext_logo_grifo"]:checked') ? 'Sí' : 'No';
+      data.camareros = this.querySelector('[name="ext_camareros"]:checked') ? 'Sí' : 'No';
+      data.privacidad = this.querySelector('[name="acepta_privacidad"]:checked') ? 'Aceptada' : 'No';
+
+      // product selections
+      ['beb', 'mob', 'food', 'av', 'acc'].forEach(name => {
+        const selected = [...this.querySelectorAll(`input[name="${name}"]:checked`)].map(c => c.value);
+        data['productos_' + name] = selected.join(' | ') || 'Ninguno';
+      });
+
+      // total
+      data.presupuesto_estimado = document.getElementById('total-display').textContent;
+
+      try {
+        const res = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        this.style.display = 'none';
+        const msg = document.getElementById('ok');
+        msg.style.display = 'block';
+        msg.scrollIntoView({ behavior: 'smooth' });
+      } catch {
+        btn.disabled = false; btn.textContent = 'Solicitar Presupuesto →';
+        alert('Error al enviar. Por favor, inténtalo de nuevo.');
+      }
+    });
   </script>
   <!-- COOKIE BANNER -->
   <div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
@@ -2091,23 +2117,24 @@
   </div>
 
   <script>
-  (function() {
-    var consent = localStorage.getItem('gribeer_cookies');
-    if (consent) document.getElementById('cookie-banner').classList.add('hidden');
-  })();
+    (function () {
+      var consent = localStorage.getItem('gribeer_cookies');
+      if (consent) document.getElementById('cookie-banner').classList.add('hidden');
+    })();
 
-  function acceptCookies() {
-    localSI    m('gribee r_coo      ', 'accepted');
-    hideBanner();
-  }
-  function reject      ies() {
-    localStorage.setItem('gribeer_cookies', 'rejected');
-    hideBanner    ;
-  }
-     unction hideBanner() {
-          b = document.getElementById('cookie-banner');
-    b.c      List.add('hidd    ')        setTimeout(function(){       yle.display = 'none'; }, 350);
-  }
+    function acceptCookies() {
+      localStorage.setItem('gribeer_cookies', 'accepted');
+      hideBanner();
+    }
+    function rejectCookies() {
+      localStorage.setItem('gribeer_cookies', 'rejected');
+      hideBanner();
+    }
+    function hideBanner() {
+      var b = document.getElementById('cookie-banner');
+      b.classList.add('hidden');
+      setTimeout(function () { b.style.display = 'none'; }, 350);
+    }
   </script>
 </body>
 
