@@ -256,6 +256,13 @@
       border-top: 2px solid var(--gold);
       padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
       z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,.3);
+      opacity: 0; transform: translateY(8px);
+      transition: opacity .3s ease, transform .3s ease;
+      pointer-events: none;
+    }
+    .total-bar.visible {
+      opacity: 1; transform: translateY(0);
+      pointer-events: auto;
     }
     .total-label { font-size: 12px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; }
     .total-num { font-size: 22px; font-weight: 700; color: var(--gold); }
@@ -363,7 +370,7 @@
   </div>
 
   <!-- ① DATOS CONTACTO -->
-  <div class="card">
+  <div class="card" id="contacto-card">
     <div class="card-hd"><div class="num">1</div><h2>Tus datos de contacto</h2></div>
     <div class="card-bd">
       <div class="g2">
@@ -1125,6 +1132,15 @@
     document.getElementById('total-display').textContent =
       total.toLocaleString('es-ES') + ' €';
   }
+
+  // Show total bar once contact section scrolls out of view
+  var totalBar = document.querySelector('.total-bar');
+  var contactCard = document.getElementById('contacto-card');
+  var observer = new IntersectionObserver(function(entries) {
+    // When contact card is NOT intersecting (user scrolled past it), show bar
+    totalBar.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+  observer.observe(contactCard);
 
   // radio pills for grifo
   document.querySelectorAll('input[name="grifo_tipo"]').forEach(r => r.addEventListener('change', updateTotal));
