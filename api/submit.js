@@ -1,4 +1,4 @@
-const N8N_WEBHOOK = 'https://1-n8n.2e26n3.easypanel.host/webhook/9ad22ae6-d655-4072-8d7f-d78dce32348f';
+const N8N_WEBHOOK = 'https://1-n8n.2e26n3.easypanel.host/webhook-test/9ad22ae6-d655-4072-8d7f-d78dce32348f';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
