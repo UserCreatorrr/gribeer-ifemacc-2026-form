@@ -1003,7 +1003,6 @@
         <div class="f full">
           <label>¿Cómo nos conociste?</label>
           <div class="pills" style="margin-top:6px;">
-            <div class="pill"><input type="radio" name="como_conociste" id="ck0" value="" checked /><label for="ck0">Selecciona...</label></div>
             <div class="pill"><input type="radio" name="como_conociste" id="ck1" value="Email / Newsletter" /><label for="ck1">Email / Newsletter</label></div>
             <div class="pill"><input type="radio" name="como_conociste" id="ck2" value="LinkedIn" /><label for="ck2">LinkedIn</label></div>
             <div class="pill"><input type="radio" name="como_conociste" id="ck3" value="Recomendación" /><label for="ck3">Recomendación</label></div>
@@ -1187,11 +1186,12 @@
     data.presupuesto_estimado = document.getElementById('total-display').textContent;
 
     try {
-      await fetch('https://1-n8n.2e26n3.easypanel.host/webhook-test/9ad22ae6-d655-4072-8d7f-d78dce32348f', {
+      const res = await fetch('https://1-n8n.2e26n3.easypanel.host/webhook/9ad22ae6-d655-4072-8d7f-d78dce32348f', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       this.style.display = 'none';
       const msg = document.getElementById('ok');
       msg.style.display = 'block';
