@@ -34,15 +34,9 @@
 
     .header-logo { position: relative; display: inline-flex; }
 
-    @keyframes logoShine {
-      0%   { filter: drop-shadow(0 0 6px rgba(250,168,4,.5))  drop-shadow(0 0 2px rgba(255,220,80,.3)); }
-      50%  { filter: drop-shadow(0 0 18px rgba(250,168,4,.9)) drop-shadow(0 0 8px rgba(255,220,80,.6)) drop-shadow(0 0 2px #fff8); }
-      100% { filter: drop-shadow(0 0 6px rgba(250,168,4,.5))  drop-shadow(0 0 2px rgba(255,220,80,.3)); }
-    }
-
     .header-logo img {
       height: 88px; width: auto; position: relative; z-index: 1;
-      animation: logoShine 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(250,168,4,.7)) drop-shadow(0 0 3px rgba(255,220,80,.4));
     }
 
     .header-tag {
@@ -109,7 +103,10 @@
       appearance: none; cursor: pointer;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23FAA804' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px;
+      accent-color: var(--gold);
     }
+    .f select option:checked,
+    .f select option:focus  { background: var(--gold); color: var(--black); }
 
     /* ── DIVIDER ─────────────────────────────── */
     .hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
@@ -288,6 +285,38 @@
     .pdf-btn:hover { background: var(--gold-dk); border-color: var(--gold-dk); }
     .pdf-btn--outline { background: transparent; color: var(--black); border: 2px solid var(--border); }
     .pdf-btn--outline:hover { border-color: var(--gold); color: var(--gold); background: transparent; }
+
+    /* ── COOKIE BANNER ───────────────────────── */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #1a1a1a;
+      border-top: 2px solid var(--gold);
+      padding: 16px 24px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+      box-shadow: 0 -4px 24px rgba(0,0,0,.5);
+      font-size: 13px; color: rgba(255,255,255,.75);
+      transition: transform .3s ease;
+    }
+    #cookie-banner.hidden { transform: translateY(110%); }
+
+    #cookie-banner p { flex: 1; min-width: 240px; line-height: 1.6; margin: 0; }
+    #cookie-banner a { color: var(--gold); text-decoration: underline; }
+
+    .ck-accept {
+      background: var(--gold); color: var(--black); border: none;
+      font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 700;
+      padding: 9px 24px; border-radius: 30px; cursor: pointer;
+      transition: background .18s; white-space: nowrap;
+    }
+    .ck-accept:hover { background: var(--gold-dk); }
+
+    .ck-reject {
+      background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.2);
+      font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500;
+      padding: 8px 18px; border-radius: 30px; cursor: pointer;
+      transition: all .18s; white-space: nowrap;
+    }
+    .ck-reject:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.75); }
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 600px) {
@@ -1159,6 +1188,36 @@
       alert('Error al enviar. Por favor, inténtalo de nuevo.');
     }
   });
+</script>
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p>
+    🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Al continuar navegando aceptas su uso según nuestra
+    <a href="https://gribeer.com/en/politica-de-privacidad/" target="_blank">Política de Privacidad</a>.
+  </p>
+  <button class="ck-accept" onclick="acceptCookies()">Aceptar todas</button>
+  <button class="ck-reject" onclick="rejectCookies()">Solo necesarias</button>
+</div>
+
+<script>
+  (function() {
+    var consent = localStorage.getItem('gribeer_cookies');
+    if (consent) document.getElementById('cookie-banner').classList.add('hidden');
+  })();
+
+  function acceptCookies() {
+    localStorage.setItem('gribeer_cookies', 'accepted');
+    hideBanner();
+  }
+  function rejectCookies() {
+    localStorage.setItem('gribeer_cookies', 'rejected');
+    hideBanner();
+  }
+  function hideBanner() {
+    var b = document.getElementById('cookie-banner');
+    b.classList.add('hidden');
+    setTimeout(function(){ b.style.display = 'none'; }, 350);
+  }
 </script>
 </body>
 </html>
