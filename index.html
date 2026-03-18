@@ -1133,13 +1133,16 @@
       total.toLocaleString('es-ES') + ' €';
   }
 
-  // Show total bar once contact section scrolls out of view — stays visible permanently
+  // Show total bar only AFTER contact card has been seen and scrolled past
   var totalBar = document.querySelector('.total-bar');
   var contactCard = document.getElementById('contacto-card');
+  var contactSeen = false;
   var observer = new IntersectionObserver(function(entries) {
-    if (!entries[0].isIntersecting) {
-      totalBar.classList.add('visible');
-      observer.disconnect(); // stay visible forever after
+    if (entries[0].isIntersecting) {
+      contactSeen = true; // card entered the viewport
+    } else if (contactSeen) {
+      totalBar.classList.add('visible'); // card left after being seen → show bar
+      observer.disconnect();
     }
   }, { threshold: 0 });
   observer.observe(contactCard);
