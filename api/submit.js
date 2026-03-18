@@ -10,18 +10,14 @@ module.exports = async function handler(req, res) {
   try {
     const data = req.body || {};
 
-    const params = new URLSearchParams();
-    for (const [key, value] of Object.entries(data)) {
-      if (value !== undefined && value !== null && value !== '') {
-        params.append(key, String(value));
-      }
-    }
-
-    const url = `${N8N_WEBHOOK}?${params.toString()}`;
-
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);
-    const response = await fetch(url, { signal: controller.signal });
+    const response = await fetch(N8N_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      signal: controller.signal
+    });
     clearTimeout(timeoutId);
 
     const status = response.status;
