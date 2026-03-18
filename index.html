@@ -3,335 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gribeer – IFEMACC 2026 | Formulario de Participación</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Gribeer – IFEMACC 2026 | Solicitud de Servicios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold:   #FAA804;
-      --black:  #131313;
-      --dark:   #1e1e1e;
-      --gray:   #54595F;
-      --light:  #F5F5F5;
-      --white:  #FFFFFF;
-      --border: #e0e0e0;
-      --radius: 10px;
+      --gold:    #FAA804;
+      --gold-dk: #e09600;
+      --black:   #131313;
+      --dark:    #1e1e1e;
+      --gray:    #54595F;
+      --lgray:   #888;
+      --light:   #F5F5F5;
+      --border:  #e0e0e0;
+      --white:   #FFFFFF;
+      --r:       10px;
     }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--light);
-      color: var(--black);
-      min-height: 100vh;
-    }
+    body { font-family: 'Roboto', sans-serif; background: var(--light); color: var(--black); min-height: 100vh; }
 
-    /* ── HEADER ── */
-    header {
-      background: var(--black);
-      padding: 0;
-      position: relative;
-      overflow: hidden;
-    }
+    /* ── HEADER ──────────────────────────────── */
+    header { background: var(--black); }
 
     .header-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 36px 32px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      position: relative;
-      z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 40px 24px 32px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
     }
 
-    .header-logo img {
-      height: 64px;
-      width: auto;
-      filter: brightness(1);
-    }
+    .header-logo img { height: 60px; width: auto; }
 
-    .header-badge {
-      background: var(--gold);
-      color: var(--black);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 5px 16px;
-      border-radius: 20px;
+    .header-tag {
+      background: var(--gold); color: var(--black);
+      font-weight: 700; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 5px 18px; border-radius: 20px;
     }
 
     .header-title {
-      font-family: 'Roboto Slab', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--white);
-      text-align: center;
-      line-height: 1.3;
+      font-family: 'Roboto Slab', serif; font-size: 26px; font-weight: 700;
+      color: var(--white); text-align: center; line-height: 1.35;
+    }
+    .header-title em { color: var(--gold); font-style: normal; }
+
+    .header-sub { font-size: 13.5px; color: rgba(255,255,255,.6); text-align: center; max-width: 540px; line-height: 1.65; }
+
+    .gold-bar { height: 4px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    /* ── WRAPPER ─────────────────────────────── */
+    .wrap { max-width: 860px; margin: 36px auto 60px; padding: 0 16px; }
+
+    /* ── CARD ────────────────────────────────── */
+    .card { background: var(--white); border-radius: var(--r); border: 1px solid var(--border); margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+
+    .card-hd {
+      background: var(--black); padding: 13px 22px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-hd .num {
+      background: var(--gold); color: var(--black); font-weight: 700; font-size: 11px;
+      min-width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .card-hd h2 { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: .6px; text-transform: uppercase; }
+    .card-hd .sub { font-size: 11px; color: rgba(255,255,255,.5); margin-left: auto; }
+
+    .card-bd { padding: 22px; }
+
+    /* ── GRID ────────────────────────────────── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .full { grid-column: 1 / -1; }
+
+    /* ── FIELD ───────────────────────────────── */
+    .f { display: flex; flex-direction: column; gap: 5px; }
+
+    .f > label {
+      font-size: 11px; font-weight: 600; color: var(--gray);
+      letter-spacing: .4px; text-transform: uppercase;
+    }
+    .f > label .req { color: var(--gold); }
+
+    .f input, .f select, .f textarea {
+      border: 1.5px solid var(--border); border-radius: 7px;
+      padding: 10px 13px; font-family: 'Roboto', sans-serif; font-size: 13.5px;
+      color: var(--black); background: var(--white);
+      transition: border-color .18s, box-shadow .18s; outline: none; width: 100%;
+    }
+    .f input:focus, .f select:focus, .f textarea:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 3px rgba(250,168,4,.14);
+    }
+    .f textarea { resize: vertical; min-height: 90px; }
+    .f select {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23FAA804' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px;
     }
 
-    .header-title span { color: var(--gold); }
+    /* ── DIVIDER ─────────────────────────────── */
+    .hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
-    .header-sub {
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      text-align: center;
-      max-width: 560px;
-      line-height: 1.6;
+    /* ── SERVICE BLOCK ───────────────────────── */
+    .svc-block { border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 12px; transition: border-color .2s; }
+    .svc-block:last-child { margin-bottom: 0; }
+
+    .svc-toggle {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 16px; cursor: pointer; user-select: none;
+      background: #fafafa; transition: background .15s;
     }
+    .svc-toggle:hover { background: #f0f0f0; }
 
-    /* decorative strip */
-    .gold-strip {
-      height: 5px;
-      background: linear-gradient(90deg, var(--black) 0%, var(--gold) 40%, var(--black) 100%);
-    }
+    .svc-block.active { border-color: var(--gold); }
+    .svc-block.active .svc-toggle { background: #fff8e6; }
 
-    /* ── FORM WRAPPER ── */
-    .form-wrapper {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px 60px;
-    }
-
-    /* ── SECTION CARD ── */
-    .card {
-      background: var(--white);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      margin-bottom: 28px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,.06);
-    }
-
-    .card-header {
-      background: var(--black);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .card-header .step {
-      background: var(--gold);
-      color: var(--black);
-      font-weight: 700;
-      font-size: 12px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .card-header h2 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: .5px;
-      text-transform: uppercase;
-    }
-
-    .card-body { padding: 24px; }
-
-    /* ── GRID ── */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .full   { grid-column: 1 / -1; }
-
-    /* ── FIELD ── */
-    .field { display: flex; flex-direction: column; gap: 6px; }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gray);
-      letter-spacing: .4px;
-      text-transform: uppercase;
-    }
-
-    .field label .req { color: var(--gold); margin-left: 2px; }
-
-    .field input,
-    .field select,
-    .field textarea {
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 11px 14px;
-      font-family: 'Roboto', sans-serif;
-      font-size: 14px;
-      color: var(--black);
-      background: var(--white);
-      transition: border-color .2s, box-shadow .2s;
-      outline: none;
-      width: 100%;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(250,168,4,.15);
-    }
-
-    .field textarea { resize: vertical; min-height: 100px; }
-
-    .field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FAA804' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
-
-    /* ── CHECKBOX GROUP ── */
-    .check-group { display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
-    .check-row   { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-
-    .check-row input[type="checkbox"] { display: none; }
-
-    .check-box {
-      width: 20px; height: 20px; flex-shrink: 0;
-      border: 2px solid var(--border);
-      border-radius: 5px;
-      transition: all .2s;
+    .svc-cb { display: none; }
+    .svc-check {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border: 2px solid var(--border); border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
+      transition: all .18s;
     }
-
-    .check-row input[type="checkbox"]:checked + .check-box {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
-    .check-row input[type="checkbox"]:checked + .check-box::after {
-      content: '';
-      display: block;
+    .svc-cb:checked ~ .svc-check,
+    .svc-block.active .svc-check { background: var(--gold); border-color: var(--gold); }
+    .svc-cb:checked ~ .svc-check::after,
+    .svc-block.active .svc-check.checked::after {
+      content: ''; display: block;
       width: 5px; height: 9px;
-      border: 2px solid var(--black);
-      border-top: none; border-left: none;
-      transform: rotate(45deg) translate(-1px, -1px);
+      border: 2px solid var(--black); border-top: none; border-left: none;
+      transform: rotate(45deg) translate(-1px,-1px);
     }
+    .svc-title { font-weight: 600; font-size: 14px; flex: 1; }
+    .svc-price { font-size: 12px; color: var(--gold); font-weight: 700; }
 
-    .check-label { font-size: 14px; color: var(--black); }
+    .svc-detail { padding: 0 16px; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s; }
+    .svc-block.active .svc-detail { max-height: 800px; padding: 4px 16px 16px; }
 
-    /* ── RADIO GROUP ── */
-    .radio-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-
-    .radio-pill input[type="radio"] { display: none; }
-    .radio-pill label {
-      display: inline-flex; align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      border: 1.5px solid var(--border);
-      border-radius: 30px;
-      font-size: 13px; font-weight: 500;
-      cursor: pointer;
-      transition: all .2s;
-      color: var(--gray);
-      text-transform: none;
-      letter-spacing: 0;
+    /* ── RADIO PILLS ─────────────────────────── */
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .pill input[type="radio"] { display: none; }
+    .pill label {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 7px 16px; border: 1.5px solid var(--border); border-radius: 30px;
+      font-size: 12.5px; font-weight: 500; cursor: pointer; color: var(--gray);
+      transition: all .18s; text-transform: none; letter-spacing: 0;
     }
+    .pill input[type="radio"]:checked + label { border-color: var(--gold); background: var(--gold); color: var(--black); font-weight: 700; }
 
-    .radio-pill input[type="radio"]:checked + label {
-      border-color: var(--gold);
-      background: var(--gold);
-      color: var(--black);
-      font-weight: 700;
-    }
-
-    /* ── VOLUME SLIDER ── */
-    .slider-wrap { display: flex; flex-direction: column; gap: 8px; }
-
-    .slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray); }
-
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%; height: 6px;
-      background: var(--border);
-      border-radius: 3px;
-      outline: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 3px solid var(--black);
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,.2);
-    }
-
-    .slider-value {
-      font-weight: 700; font-size: 16px; color: var(--gold);
-      text-align: center;
-    }
-
-    /* ── DIVIDER ── */
-    .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-    /* ── SUBMIT ── */
-    .submit-area { text-align: center; margin-top: 32px; }
-
-    .btn-submit {
-      background: var(--gold);
-      color: var(--black);
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      padding: 16px 56px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      letter-spacing: .5px;
-      transition: all .2s;
-      box-shadow: 0 4px 20px rgba(250,168,4,.4);
-    }
-
-    .btn-submit:hover { background: #e09600; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(250,168,4,.5); }
-    .btn-submit:active { transform: translateY(0); }
-
-    .form-note {
-      margin-top: 14px;
-      font-size: 12px;
-      color: var(--gray);
-    }
-
-    /* ── SUCCESS ── */
-    #success-msg {
-      display: none;
-      background: var(--black);
-      border-radius: var(--radius);
-      padding: 48px 32px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    #success-msg .check-icon {
-      width: 64px; height: 64px;
-      background: var(--gold);
-      border-radius: 50%;
+    /* ── CHECK ROW ───────────────────────────── */
+    .ck { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 3px 0; }
+    .ck input[type="checkbox"] { display: none; }
+    .ck-box {
+      width: 18px; height: 18px; flex-shrink: 0;
+      border: 2px solid var(--border); border-radius: 4px; transition: all .18s;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 28px;
     }
-
-    #success-msg h3 { color: var(--white); font-size: 22px; margin-bottom: 10px; }
-    #success-msg p  { color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.7; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: rgba(255,255,255,.4);
+    .ck input[type="checkbox"]:checked + .ck-box { background: var(--gold); border-color: var(--gold); }
+    .ck input[type="checkbox"]:checked + .ck-box::after {
+      content: ''; display: block; width: 4px; height: 8px;
+      border: 2px solid var(--black); border-top: none; border-left: none;
+      transform: rotate(45deg) translate(-1px,-1px);
     }
+    .ck-label { font-size: 13px; color: var(--black); }
+    .ck-price { font-size: 11px; color: var(--gold); font-weight: 700; margin-left: 4px; }
 
+    /* ── PRODUCT GRID ────────────────────────── */
+    .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+
+    .prod-item {
+      border: 1.5px solid var(--border); border-radius: 7px; padding: 10px 12px;
+      cursor: pointer; transition: all .18s; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .prod-item:hover { border-color: var(--gold); background: #fff8e6; }
+    .prod-item.selected { border-color: var(--gold); background: #fff8e6; }
+
+    .prod-item input[type="checkbox"] { display: none; }
+    .prod-dot {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border);
+      flex-shrink: 0; margin-top: 2px; transition: all .18s; background: var(--white);
+    }
+    .prod-item.selected .prod-dot { background: var(--gold); border-color: var(--gold); }
+    .prod-info { flex: 1; }
+    .prod-name { font-size: 12.5px; font-weight: 600; line-height: 1.3; }
+    .prod-desc { font-size: 11px; color: var(--lgray); margin-top: 2px; line-height: 1.4; }
+    .prod-pvp { font-size: 12px; color: var(--gold); font-weight: 700; margin-top: 4px; }
+
+    /* ── SUBMIT ──────────────────────────────── */
+    .submit-area { text-align: center; margin-top: 30px; }
+
+    .btn {
+      background: var(--gold); color: var(--black); border: none;
+      font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 700;
+      padding: 15px 52px; border-radius: 50px; cursor: pointer; letter-spacing: .4px;
+      transition: all .2s; box-shadow: 0 4px 18px rgba(250,168,4,.4);
+    }
+    .btn:hover { background: var(--gold-dk); transform: translateY(-2px); box-shadow: 0 6px 22px rgba(250,168,4,.5); }
+    .btn:active { transform: none; }
+    .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .form-note { margin-top: 12px; font-size: 11.5px; color: var(--lgray); }
+
+    /* ── SUCCESS ─────────────────────────────── */
+    #ok { display: none; background: var(--black); border-radius: var(--r); padding: 52px 32px; text-align: center; }
+    #ok .ok-icon { width: 64px; height: 64px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700; color: var(--black); }
+    #ok h3 { color: var(--white); font-size: 22px; margin-bottom: 10px; }
+    #ok p { color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.7; }
+    #ok a { color: var(--gold); text-decoration: none; }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer { background: var(--black); text-align: center; padding: 18px; font-size: 11.5px; color: rgba(255,255,255,.35); }
     footer a { color: var(--gold); text-decoration: none; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .header-title { font-size: 22px; }
-      .card-body { padding: 18px; }
+    /* ── TOTAL BAR ───────────────────────────── */
+    .total-bar {
+      position: sticky; bottom: 0; background: var(--black);
+      border-top: 2px solid var(--gold);
+      padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+      z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,.3);
+    }
+    .total-label { font-size: 12px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; }
+    .total-num { font-size: 22px; font-weight: 700; color: var(--gold); }
+    .total-note { font-size: 11px; color: rgba(255,255,255,.35); }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 600px) {
+      .g2, .g3, .prod-grid { grid-template-columns: 1fr; }
+      .header-title { font-size: 21px; }
     }
   </style>
 </head>
@@ -340,385 +237,809 @@
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <div class="header-logo">
-      <img src="logo.png" alt="Gribeer" />
-    </div>
-    <div class="header-badge">IFEMACC 2026</div>
-    <h1 class="header-title">
-      Formulario de <span>Participación</span><br />& Solicitud de Servicios
-    </h1>
-    <p class="header-sub">
-      Completa este formulario para que nuestro equipo pueda preparar una propuesta personalizada para tu empresa. Recibirás respuesta en menos de 48 horas.
-    </p>
+    <div class="header-logo"><img src="logo.png" alt="Gribeer" /></div>
+    <span class="header-tag">IFEMACC 2026</span>
+    <h1 class="header-title">Solicitud de Servicios para <em>tu Stand</em></h1>
+    <p class="header-sub">Selecciona los servicios que necesitas para IFEMA. Nuestro equipo preparará tu presupuesto personalizado en menos de 24 h.</p>
   </div>
 </header>
-<div class="gold-strip"></div>
+<div class="gold-bar"></div>
+
+<!-- TOTAL BAR -->
+<div class="total-bar">
+  <div>
+    <div class="total-label">Presupuesto estimado</div>
+    <div class="total-note">* Precios de referencia. Sujeto a confirmación.</div>
+  </div>
+  <div class="total-num" id="total-display">0 €</div>
+</div>
 
 <!-- FORM -->
-<div class="form-wrapper">
-  <form id="gribeer-form" novalidate>
+<div class="wrap">
+<form id="gf" novalidate>
 
-    <!-- 1. DATOS DE CONTACTO -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step">1</div>
-        <h2>Datos de Contacto</h2>
+  <!-- ① DATOS CONTACTO -->
+  <div class="card">
+    <div class="card-hd"><div class="num">1</div><h2>Tus datos de contacto</h2></div>
+    <div class="card-bd">
+      <div class="g2">
+        <div class="f"><label>Nombre <span class="req">*</span></label><input name="nombre" type="text" placeholder="Tu nombre" required /></div>
+        <div class="f"><label>Apellidos <span class="req">*</span></label><input name="apellidos" type="text" placeholder="Tus apellidos" required /></div>
+        <div class="f"><label>Empresa <span class="req">*</span></label><input name="empresa" type="text" placeholder="Nombre de la empresa" required /></div>
+        <div class="f"><label>Cargo</label><input name="cargo" type="text" placeholder="Ej: Director de Marketing" /></div>
+        <div class="f"><label>Email <span class="req">*</span></label><input name="email" type="email" placeholder="tu@empresa.com" required /></div>
+        <div class="f"><label>Teléfono / WhatsApp <span class="req">*</span></label><input name="telefono" type="tel" placeholder="+34 600 000 000" required /></div>
+        <div class="f"><label>Número de stand en IFEMA</label><input name="stand" type="text" placeholder="Ej: Hall 6 · B-204" /></div>
+        <div class="f"><label>Fechas del evento <span class="req">*</span></label><input name="fechas" type="text" placeholder="Ej: 10-12 junio 2026" required /></div>
       </div>
-      <div class="card-body">
-        <div class="grid-2">
-          <div class="field">
-            <label>Nombre <span class="req">*</span></label>
-            <input type="text" name="nombre" placeholder="Tu nombre" required />
-          </div>
-          <div class="field">
-            <label>Apellidos <span class="req">*</span></label>
-            <input type="text" name="apellidos" placeholder="Tus apellidos" required />
-          </div>
-          <div class="field">
-            <label>Empresa / Razón Social <span class="req">*</span></label>
-            <input type="text" name="empresa" placeholder="Nombre de la empresa" required />
-          </div>
-          <div class="field">
-            <label>Cargo / Posición</label>
-            <input type="text" name="cargo" placeholder="Ej: Director de Compras" />
-          </div>
-          <div class="field">
-            <label>Email <span class="req">*</span></label>
-            <input type="email" name="email" placeholder="empresa@correo.com" required />
-          </div>
-          <div class="field">
-            <label>Teléfono / WhatsApp <span class="req">*</span></label>
-            <input type="tel" name="telefono" placeholder="+34 600 000 000" required />
-          </div>
-          <div class="field">
-            <label>País <span class="req">*</span></label>
-            <select name="pais" required>
-              <option value="">Selecciona país...</option>
-              <option>España</option>
-              <option>Portugal</option>
-              <option>Francia</option>
-              <option>Alemania</option>
-              <option>Reino Unido</option>
-              <option>Italia</option>
-              <option>México</option>
-              <option>Estados Unidos</option>
-              <option>Argentina</option>
-              <option>Colombia</option>
-              <option>Chile</option>
-              <option>Brasil</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Ciudad</label>
-            <input type="text" name="ciudad" placeholder="Ciudad" />
-          </div>
+    </div>
+  </div>
+
+  <!-- ② CERVEZA & GRIFOS -->
+  <div class="card">
+    <div class="card-hd"><div class="num">2</div><h2>🍺 Cerveza & Grifos</h2><span class="sub">Alquiler en IFEMA</span></div>
+    <div class="card-bd">
+
+      <!-- Pack grifo -->
+      <p style="font-size:12px;color:var(--lgray);margin-bottom:12px;">Grifo <strong style="color:var(--gold)">GRATIS</strong> a partir de 2 barriles (Opción 3). Las Opciones 1 y 2 tienen suplemento por bandeja adicional.</p>
+
+      <div class="f full"><label>Tipo de instalación</label>
+        <div class="pills">
+          <div class="pill"><input type="radio" name="grifo_tipo" id="g0" value="Sin grifo" /><label for="g0">Sin grifo</label></div>
+          <div class="pill"><input type="radio" name="grifo_tipo" id="g1" value="Opción 1 – Bandeja pinza (+65€)" /><label for="g1">Opción 1 – Bandeja pinza <span style="color:var(--gold-dk);font-weight:700">+65€</span></label></div>
+          <div class="pill"><input type="radio" name="grifo_tipo" id="g2" value="Opción 2 – Bandeja encastrada (+130€)" /><label for="g2">Opción 2 – Bandeja encastrada <span style="color:var(--gold-dk);font-weight:700">+130€</span></label></div>
+          <div class="pill"><input type="radio" name="grifo_tipo" id="g3" value="Opción 3 – Grifo estándar (incluido)" /><label for="g3">Opción 3 – Grifo estándar (incluido)</label></div>
+          <div class="pill"><input type="radio" name="grifo_tipo" id="g4" value="Grifo V-100 Portátil Grande (presupuesto)" /><label for="g4">Grifo V-100 Portátil Grande (presupuesto)</label></div>
+        </div>
+      </div>
+
+      <hr class="hr" />
+
+      <div class="g2">
+        <div class="f"><label>Pack de barriles</label>
+          <select name="barril_pack" data-price="1">
+            <option value="0|Sin barriles">Sin barriles</option>
+            <option value="198|Grifo + 1 Barril 30L – 198€">Grifo + 1 Barril 30L – 198€</option>
+            <option value="276|Grifo + 2 Barriles 30L – 276€">Grifo + 2 Barriles 30L – 276€</option>
+          </select>
+        </div>
+        <div class="f"><label>Barriles adicionales (30L · 138€ c/u)</label>
+          <select name="barril_extra" data-price="138">
+            <option value="0">0 barriles adicionales</option>
+            <option value="1">+1 barril – 138€</option>
+            <option value="2">+2 barriles – 276€</option>
+            <option value="3">+3 barriles – 414€</option>
+            <option value="4">+4 barriles – 552€</option>
+            <option value="5">+5 barriles – 690€</option>
+          </select>
+        </div>
+        <div class="f"><label>Marca de cerveza</label>
+          <select name="marca_cerveza">
+            <option value="">Selecciona...</option>
+            <option>Mahou</option>
+            <option>Alhambra</option>
+            <option>Estrella Galicia</option>
+            <option>Indiferente</option>
+          </select>
+        </div>
+        <div class="f"><label>Pack de vasos</label>
+          <select name="pack_vasos" data-price="1">
+            <option value="0|Sin vasos">Sin vasos</option>
+            <option value="25|Pack 100 vasos 0,33cl – 25€">Pack 100 vasos 0,33cl – 25€</option>
+            <option value="35|Pack 150 vasos 0,33cl – 35€">Pack 150 vasos 0,33cl – 35€</option>
+            <option value="40|Pack 200 vasos 0,33cl – 40€">Pack 200 vasos 0,33cl – 40€</option>
+            <option value="0|Vasos de cristal (presupuesto)">Vasos de cristal (presupuesto)</option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="hr" />
+
+      <div class="f full">
+        <label>Extras cerveza</label>
+        <div class="g2" style="margin-top:4px;">
+          <label class="ck"><input type="checkbox" name="ext_logo_grifo" value="Logo en grifo" /><span class="ck-box"></span><span class="ck-label">Logo en grifo</span><span class="ck-price">(incluido)</span></label>
+          <label class="ck"><input type="checkbox" name="ext_camareros" value="Servicio de camareros (presupuesto, mín. 4h)" /><span class="ck-box"></span><span class="ck-label">Servicio de camareros</span><span class="ck-price">Presupuesto · Mín 4h</span></label>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- 2. TIPO DE NEGOCIO -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step">2</div>
-        <h2>Tipo de Negocio</h2>
-      </div>
-      <div class="card-body">
-        <div class="field full">
-          <label>¿Cómo defines tu negocio? <span class="req">*</span></label>
-          <div class="radio-group" id="tipo-negocio">
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn1" value="Distribuidor" required /><label for="tn1">🚚 Distribuidor</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn2" value="Importador" /><label for="tn2">📦 Importador</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn3" value="Mayorista" /><label for="tn3">🏭 Mayorista</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn4" value="Cadena de Retail" /><label for="tn4">🛒 Cadena de Retail</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn5" value="Restauración / Hostelería" /><label for="tn5">🍽️ Restauración / Hostelería</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn6" value="Organizador de Eventos" /><label for="tn6">🎪 Organizador de Eventos</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn7" value="E-commerce" /><label for="tn7">💻 E-commerce</label></div>
-            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn8" value="Otro" /><label for="tn8">Otro</label></div>
-          </div>
-        </div>
+  <!-- ③ BEBIDAS -->
+  <div class="card">
+    <div class="card-hd"><div class="num">3</div><h2>🥤 Packs de Bebidas</h2><span class="sub">Neveras, café, vino, agua</span></div>
+    <div class="card-bd">
+      <div class="prod-grid" id="bebidas-grid">
 
-        <hr class="divider" />
+        <label class="prod-item" data-price="240">
+          <input type="checkbox" name="beb" value="Pack 96 Bebidas – Nevera 118L (240€)" data-price="240" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack 96 Bebidas</div>
+            <div class="prod-desc">Nevera acristalada 118L + 96 bebidas variadas</div>
+            <div class="prod-pvp">240€</div>
+          </div>
+        </label>
 
-        <div class="grid-2">
-          <div class="field">
-            <label>Canal principal de venta</label>
-            <select name="canal_venta">
-              <option value="">Selecciona...</option>
-              <option>On-trade (bares, restaurantes)</option>
-              <option>Off-trade (supermercados, tiendas)</option>
-              <option>Mixto (on + off trade)</option>
-              <option>Online</option>
-              <option>Eventos y festivales</option>
-            </select>
+        <label class="prod-item" data-price="297">
+          <input type="checkbox" name="beb" value="Pack 144 Bebidas – Nevera 118L (297€)" data-price="297" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack 144 Bebidas</div>
+            <div class="prod-desc">Nevera acristalada 118L + 144 bebidas variadas</div>
+            <div class="prod-pvp">297€ <span style="font-size:10px;color:var(--lgray);">(Nevera 237L +35€)</span></div>
           </div>
-          <div class="field">
-            <label>Número de puntos de venta activos</label>
-            <select name="puntos_venta">
-              <option value="">Selecciona...</option>
-              <option>1 – 10</option>
-              <option>11 – 50</option>
-              <option>51 – 200</option>
-              <option>201 – 500</option>
-              <option>+500</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
+        </label>
 
-    <!-- 3. PRODUCTOS DE INTERÉS -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step">3</div>
-        <h2>Productos de Interés</h2>
-      </div>
-      <div class="card-body">
-        <div class="grid-2">
-          <div class="field">
-            <label>Categorías de producto <span class="req">*</span></label>
-            <div class="check-group">
-              <label class="check-row"><input type="checkbox" name="productos" value="Cerveza artesana" /><span class="check-box"></span><span class="check-label">Cerveza artesana</span></label>
-              <label class="check-row"><input type="checkbox" name="productos" value="Cerveza premium" /><span class="check-box"></span><span class="check-label">Cerveza premium</span></label>
-              <label class="check-row"><input type="checkbox" name="productos" value="Cerveza sin alcohol" /><span class="check-box"></span><span class="check-label">Cerveza sin alcohol</span></label>
-              <label class="check-row"><input type="checkbox" name="productos" value="Lager / Pilsner" /><span class="check-box"></span><span class="check-label">Lager / Pilsner</span></label>
-              <label class="check-row"><input type="checkbox" name="productos" value="Ale / IPA" /><span class="check-box"></span><span class="check-label">Ale / IPA</span></label>
-              <label class="check-row"><input type="checkbox" name="productos" value="Stout / Porter" /><span class="check-box"></span><span class="check-label">Stout / Porter</span></label>
-            </div>
+        <label class="prod-item" data-price="155">
+          <input type="checkbox" name="beb" value="Pack 100 Café L'OR (155€)" data-price="155" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack 100 Café L'OR</div>
+            <div class="prod-desc">Cafetera L'OR + 100 cápsulas + vasos, cucharillas, azucarillos y leche</div>
+            <div class="prod-pvp">155€</div>
           </div>
-          <div class="field">
-            <label>Formato preferido</label>
-            <div class="check-group">
-              <label class="check-row"><input type="checkbox" name="formato" value="Barril (keg)" /><span class="check-box"></span><span class="check-label">🛢️ Barril (keg)</span></label>
-              <label class="check-row"><input type="checkbox" name="formato" value="Botella 33cl" /><span class="check-box"></span><span class="check-label">🍺 Botella 33cl</span></label>
-              <label class="check-row"><input type="checkbox" name="formato" value="Botella 50cl" /><span class="check-box"></span><span class="check-label">🍺 Botella 50cl</span></label>
-              <label class="check-row"><input type="checkbox" name="formato" value="Lata 33cl" /><span class="check-box"></span><span class="check-label">🥫 Lata 33cl</span></label>
-              <label class="check-row"><input type="checkbox" name="formato" value="Lata 50cl" /><span class="check-box"></span><span class="check-label">🥫 Lata 50cl</span></label>
-              <label class="check-row"><input type="checkbox" name="productos" value="Marca blanca / Privada" /><span class="check-box"></span><span class="check-label">🏷️ Marca blanca / Privada</span></label>
-            </div>
-          </div>
-        </div>
+        </label>
 
-        <hr class="divider" />
-
-        <!-- Volumen -->
-        <div class="field full">
-          <label>Volumen estimado mensual (hectolitros)</label>
-          <div class="slider-wrap">
-            <div class="slider-labels"><span>10 hl</span><span>250 hl</span><span>500 hl</span><span>+1.000 hl</span></div>
-            <input type="range" name="volumen_slider" id="volSlider" min="10" max="1000" step="10" value="100"
-              oninput="document.getElementById('volVal').textContent = this.value + ' hl'" />
-            <div class="slider-value" id="volVal">100 hl</div>
+        <label class="prod-item" data-price="263">
+          <input type="checkbox" name="beb" value="Pack 200 Café L'OR (263€)" data-price="263" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack 200 Café L'OR</div>
+            <div class="prod-desc">Cafetera L'OR + 200 cápsulas + vasos, cucharillas, azucarillos y leche</div>
+            <div class="prod-pvp">263€</div>
           </div>
-          <input type="hidden" name="volumen_estimado" id="volHidden" value="100 hl" />
-        </div>
-      </div>
-    </div>
+        </label>
 
-    <!-- 4. SERVICIOS ADICIONALES -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step">4</div>
-        <h2>Servicios Adicionales</h2>
-      </div>
-      <div class="card-body">
-        <div class="field full">
-          <label>¿Qué servicios te interesan?</label>
-          <div class="radio-group">
-            <div class="radio-pill"><input type="radio" name="servicios" id="sv1" value="Distribución exclusiva" /><label for="sv1">Distribución exclusiva</label></div>
-            <div class="radio-pill"><input type="radio" name="servicios" id="sv2" value="Marca blanca / Private label" /><label for="sv2">Marca blanca</label></div>
-            <div class="radio-pill"><input type="radio" name="servicios" id="sv3" value="Catas y formación" /><label for="sv3">Catas & formación</label></div>
-            <div class="radio-pill"><input type="radio" name="servicios" id="sv4" value="Patrocinio de eventos" /><label for="sv4">Patrocinio de eventos</label></div>
-            <div class="radio-pill"><input type="radio" name="servicios" id="sv5" value="Packaging personalizado" /><label for="sv5">Packaging personalizado</label></div>
-            <div class="radio-pill"><input type="radio" name="servicios" id="sv6" value="Logística y transporte" /><label for="sv6">Logística & transporte</label></div>
+        <label class="prod-item" data-price="198">
+          <input type="checkbox" name="beb" value="Pack 100 Café Profesional Zenius (198€)" data-price="198" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack 100 Café Prof. Zenius</div>
+            <div class="prod-desc">Cafetera Zenius Profesional + 100 cápsulas + accesorios</div>
+            <div class="prod-pvp">198€</div>
           </div>
-        </div>
+        </label>
 
-        <hr class="divider" />
+        <label class="prod-item" data-price="320">
+          <input type="checkbox" name="beb" value="Pack 200 Café Profesional Zenius (320€)" data-price="320" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack 200 Café Prof. Zenius</div>
+            <div class="prod-desc">Cafetera Zenius Profesional + 200 cápsulas + accesorios</div>
+            <div class="prod-pvp">320€</div>
+          </div>
+        </label>
 
-        <div class="grid-2">
-          <div class="field">
-            <label>¿Cuándo quieres comenzar?</label>
-            <select name="inicio">
-              <option value="">Selecciona...</option>
-              <option>Inmediatamente (1 mes)</option>
-              <option>A corto plazo (1–3 meses)</option>
-              <option>A medio plazo (3–6 meses)</option>
-              <option>A largo plazo (+6 meses)</option>
-            </select>
+        <label class="prod-item" data-price="285">
+          <input type="checkbox" name="beb" value="Pack Vino Español – 12 botellas + Cava (285€)" data-price="285" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack Vino Español</div>
+            <div class="prod-desc">12 botellas vino (2 variedades) + Cava vino acristalada</div>
+            <div class="prod-pvp">285€ <span style="font-size:10px;color:var(--lgray);">(Vasos cristal: presupuesto)</span></div>
           </div>
-          <div class="field">
-            <label>Presupuesto mensual estimado</label>
-            <select name="presupuesto">
-              <option value="">Selecciona...</option>
-              <option>Menos de 5.000 €</option>
-              <option>5.000 € – 15.000 €</option>
-              <option>15.000 € – 50.000 €</option>
-              <option>50.000 € – 100.000 €</option>
-              <option>Más de 100.000 €</option>
-            </select>
+        </label>
+
+        <label class="prod-item" data-price="394">
+          <input type="checkbox" name="beb" value="Arcón Botellero 200L + 192 Refrescos (394€)" data-price="394" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Arcón Botellero + 192 Refrescos</div>
+            <div class="prod-desc">Arcón botellero 200L + 192 refrescos variados</div>
+            <div class="prod-pvp">394€</div>
           </div>
-        </div>
+        </label>
+
+        <label class="prod-item" data-price="130">
+          <input type="checkbox" name="beb" value="Fuente Agua Fría y Caliente + 300 vasos (130€)" data-price="130" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Fuente Agua Fría y Caliente</div>
+            <div class="prod-desc">3 botellas 18,9L + 300 vasos</div>
+            <div class="prod-pvp">130€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="0">
+          <input type="checkbox" name="beb" value="Servicios Cocktelería (presupuesto)" data-price="0" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Servicios Cocktelería</div>
+            <div class="prod-desc">Servicio personalizado con camareros</div>
+            <div class="prod-pvp" style="color:var(--lgray)">Pedir presupuesto</div>
+          </div>
+        </label>
+
       </div>
     </div>
+  </div>
 
-    <!-- 5. DETALLES IFEMACC 2026 -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step">5</div>
-        <h2>IFEMACC 2026 – Detalles de Participación</h2>
-      </div>
-      <div class="card-body">
-        <div class="grid-2">
-          <div class="field">
-            <label>¿Estarás presente en IFEMACC 2026?</label>
-            <div class="radio-group">
-              <div class="radio-pill"><input type="radio" name="asistencia_ifema" id="as1" value="Sí, con stand propio" /><label for="as1">Sí, con stand</label></div>
-              <div class="radio-pill"><input type="radio" name="asistencia_ifema" id="as2" value="Sí, como visitante" /><label for="as2">Como visitante</label></div>
-              <div class="radio-pill"><input type="radio" name="asistencia_ifema" id="as3" value="No" /><label for="as3">No</label></div>
-            </div>
+  <!-- ④ MOBILIARIO -->
+  <div class="card">
+    <div class="card-hd"><div class="num">4</div><h2>🪑 Mobiliario IFEMA</h2></div>
+    <div class="card-bd">
+      <div class="prod-grid">
+
+        <label class="prod-item" data-price="170">
+          <input type="checkbox" name="mob" value="Basic Pack – Mesa baja+3 sillas, Mostrador (170€)" data-price="170" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Basic Pack</div>
+            <div class="prod-desc">Mesa baja + 3 sillas · Mostrador · Papelera</div>
+            <div class="prod-pvp">170€</div>
           </div>
-          <div class="field">
-            <label>Número de stand (si aplica)</label>
-            <input type="text" name="numero_stand" placeholder="Ej: Hall 6 / Stand B-204" />
+        </label>
+
+        <label class="prod-item" data-price="295">
+          <input type="checkbox" name="mob" value="Mid Pack – Mesa baja+sillas, Mostrador, Mesa alta+taburetes (295€)" data-price="295" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Mid Pack</div>
+            <div class="prod-desc">Mesa baja + 3 sillas · Mostrador · Mesa alta + 2 taburetes · 2 Papeleras</div>
+            <div class="prod-pvp">295€</div>
           </div>
-          <div class="field full">
-            <label>¿Te gustaría reunirte con el equipo Gribeer durante IFEMACC?</label>
-            <div class="radio-group">
-              <div class="radio-pill"><input type="radio" name="reunion_ifema" id="re1" value="Sí, por favor" /><label for="re1">Sí, solicito reunión</label></div>
-              <div class="radio-pill"><input type="radio" name="reunion_ifema" id="re2" value="Prefiero reunión online" /><label for="re2">Prefiero online</label></div>
-              <div class="radio-pill"><input type="radio" name="reunion_ifema" id="re3" value="No por ahora" /><label for="re3">No por ahora</label></div>
-            </div>
+        </label>
+
+        <label class="prod-item" data-price="510">
+          <input type="checkbox" name="mob" value="Pro Pack – Completo con armario y sillas altas (510€)" data-price="510" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pro Pack</div>
+            <div class="prod-desc">Mesa baja + sillas · Mostrador · Mesa alta + taburetes · Armario 102cm · Mesa alta + 2 sillas altas · 2 Papeleras</div>
+            <div class="prod-pvp">510€</div>
           </div>
-          <div class="field">
-            <label>Fecha preferida de reunión</label>
-            <input type="date" name="fecha_reunion" />
+        </label>
+
+        <label class="prod-item" data-price="0">
+          <input type="checkbox" name="mob" value="Mobiliario a medida (presupuesto)" data-price="0" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Mobiliario a medida</div>
+            <div class="prod-desc">Otras combinaciones o piezas individuales</div>
+            <div class="prod-pvp" style="color:var(--lgray)">Pedir presupuesto</div>
           </div>
-          <div class="field">
-            <label>Horario preferido</label>
-            <select name="horario_reunion">
-              <option value="">Selecciona...</option>
-              <option>Mañana (9:00 – 12:00)</option>
-              <option>Mediodía (12:00 – 14:00)</option>
-              <option>Tarde (15:00 – 18:00)</option>
-            </select>
-          </div>
-        </div>
+        </label>
+
       </div>
     </div>
+  </div>
 
-    <!-- 6. COMENTARIOS -->
-    <div class="card">
-      <div class="card-header">
-        <div class="step">6</div>
-        <h2>Comentarios & Requisitos Específicos</h2>
+  <!-- ⑤ CATERING & FOOD -->
+  <div class="card">
+    <div class="card-hd"><div class="num">5</div><h2>🍽️ Catering & Food</h2><span class="sub">Para tu stand</span></div>
+    <div class="card-bd">
+
+      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Productos Gourmet</p>
+      <div class="prod-grid">
+
+        <label class="prod-item" data-price="525">
+          <input type="checkbox" name="food" value="Básico Jamón y Queso – Jamón 50% Ibérico 6-8Kg + Queso Manchego 3Kg (525€)" data-price="525" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Básico Jamón y Queso</div>
+            <div class="prod-desc">Jamón 50% Ibérico 6-8Kg + Queso Manchego 3Kg + cortado a cuchillo</div>
+            <div class="prod-pvp">525€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="0">
+          <input type="checkbox" name="food" value="Cortador Jamón – Jamón 6-8kg + cortador + 1,5-2h servicio (desde 550€)" data-price="0" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Cortador de Jamón</div>
+            <div class="prod-desc">Jamón 6-8kg + cortador + platos, picos, servilletas · 1,5-2h</div>
+            <div class="prod-pvp">Desde 550€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="460">
+          <input type="checkbox" name="food" value="Vino Español – 10 bot. Rioja Reserva + Queso + Embutido (460€)" data-price="460" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Vino Español</div>
+            <div class="prod-desc">10 bot. Rioja Reserva + Queso manchego + semi + Chorizo, Lomo, Salchichón</div>
+            <div class="prod-pvp">460€ <span style="font-size:10px;color:var(--lgray);">(Cava vino +130€)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="420">
+          <input type="checkbox" name="food" value="Pack Ibéricos + Queso – Ibérico Bellota cortado y emplatado (420€)" data-price="420" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack Ibéricos + Queso</div>
+            <div class="prod-desc">Caña lomo, Chorizo y Salchichón Ibérico Bellota 1Kg c/u + Queso manchego 3kg</div>
+            <div class="prod-pvp">420€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="490">
+          <input type="checkbox" name="food" value="Appetizer Gildas – 100 Gildas + 10 bot. Vermú + Congelador 100L (490€)" data-price="490" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Appetizer Gildas</div>
+            <div class="prod-desc">100 Gildas Premium + 10 bot. Vermú + hielos, cubitera, 100 vasos, Congelador 100L</div>
+            <div class="prod-pvp">490€</div>
+          </div>
+        </label>
+
       </div>
-      <div class="card-body">
-        <div class="field full">
-          <label>¿Hay algo específico que quieras trasladarnos?</label>
-          <textarea name="comentarios" placeholder="Escribe aquí tus preguntas, requisitos especiales, territorios de exclusividad que te interesan, cualquier información adicional que quieras que valoremos..."></textarea>
+
+      <hr class="hr" />
+      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Street Food & Experiencias</p>
+      <div class="prod-grid">
+
+        <label class="prod-item" data-price="365">
+          <input type="checkbox" name="food" value="Horno Pizza – Horno 2000w + 25 pizzas (desde 365€)" data-price="365" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Horno Pizza</div>
+            <div class="prod-desc">Horno Pizza 2000w + 25 pizzas + platos + servilletas</div>
+            <div class="prod-pvp">Desde 365€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="495">
+          <input type="checkbox" name="food" value="Pack Palomitas – Carrito + 10Kg maíz + 150 cajas (495€)" data-price="495" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack Palomitas</div>
+            <div class="prod-desc">Carrito palomitas + 10Kg maíz + aceite + 150 cajas</div>
+            <div class="prod-pvp">495€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="290">
+          <input type="checkbox" name="food" value="Máquina Granizados – Máquina + 1L sirope + 200 vasos (290€)" data-price="290" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Máquina Granizados</div>
+            <div class="prod-desc">Máquina granizados + 1L sirope concentrado + 200 vasos</div>
+            <div class="prod-pvp">290€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="240">
+          <input type="checkbox" name="food" value="Carrito Bebidas – 100 Refrescos + Hielos (240€)" data-price="240" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Carrito Bebidas</div>
+            <div class="prod-desc">Carrito bebidas + 100 refrescos + hielos</div>
+            <div class="prod-pvp">240€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="325">
+          <input type="checkbox" name="food" value="Pack Perritos – Máquina + 100 salchichas + pan + salsas (325€)" data-price="325" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack Perritos</div>
+            <div class="prod-desc">Máquina perritos + 100 salchichas + pan + ketchup, mostaza, mahonesa</div>
+            <div class="prod-pvp">325€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="495">
+          <input type="checkbox" name="food" value="Carrito Perritos – Carrito + Máquina + 100 salchichas (495€)" data-price="495" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Carrito Perritos</div>
+            <div class="prod-desc">Carrito + máquina + 100 salchichas + pan + salsas + cajas</div>
+            <div class="prod-pvp">495€</div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="290">
+          <input type="checkbox" name="food" value="Parrilla Sandwiches – Parrilla + 5 pack Bimbo + Jamón y Queso (290€)" data-price="290" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Parrilla Sandwiches</div>
+            <div class="prod-desc">Parrilla + 5 pack pan Bimbo + jamón y queso + platos + servilletas</div>
+            <div class="prod-pvp">290€</div>
+          </div>
+        </label>
+
+      </div>
+
+      <hr class="hr" />
+      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Bandejas & Canapés</p>
+      <div class="prod-grid">
+
+        <label class="prod-item" data-price="99">
+          <input type="checkbox" name="food" value="Pack Desayuno 100 uds – Croissant, napolitanas, pops, donuts (99€ + 30€ transporte)" data-price="99" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack Desayuno 100 uds</div>
+            <div class="prod-desc">Croissant, napolitanas choco/crema, pops, mini donuts</div>
+            <div class="prod-pvp">99€ <span style="font-size:10px;color:var(--lgray);">(+30€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="195">
+          <input type="checkbox" name="food" value="Pack Desayuno 200 uds (195€ + 30€ transporte)" data-price="195" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Pack Desayuno 200 uds</div>
+            <div class="prod-desc">Croissant, napolitanas choco/crema, pops, mini donuts</div>
+            <div class="prod-pvp">195€ <span style="font-size:10px;color:var(--lgray);">(+30€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="105">
+          <input type="checkbox" name="food" value="Bandejas Mix 70 uds – Saladitos, pulguitas, empanadillas, croissant (105€ + 30€ transporte)" data-price="105" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Bandejas Mix 70 uds</div>
+            <div class="prod-desc">Saladitos gourmet, pulguitas jamón, empanadillas, croissant, pops</div>
+            <div class="prod-pvp">105€ <span style="font-size:10px;color:var(--lgray);">(+30€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="210">
+          <input type="checkbox" name="food" value="Bandejas Mix 140 uds (210€ + 30€ transporte)" data-price="210" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Bandejas Mix 140 uds</div>
+            <div class="prod-desc">Saladitos gourmet, pulguitas jamón, empanadillas, croissant, pops</div>
+            <div class="prod-pvp">210€ <span style="font-size:10px;color:var(--lgray);">(+30€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="110">
+          <input type="checkbox" name="food" value="Bandejas Saladas 65 uds – Saladitos, pulguitas, empanadillas, croquetas (110€ + 30€ transporte)" data-price="110" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Bandejas Saladas 65 uds</div>
+            <div class="prod-desc">Saladitos gourmet, pulguitas, empanadillas pimientos, croquetas, mini empanadillas</div>
+            <div class="prod-pvp">110€ <span style="font-size:10px;color:var(--lgray);">(+30€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="220">
+          <input type="checkbox" name="food" value="Bandejas Saladas 130 uds (220€ + 30€ transporte)" data-price="220" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Bandejas Saladas 130 uds</div>
+            <div class="prod-desc">Saladitos gourmet, pulguitas, empanadillas pimientos, croquetas</div>
+            <div class="prod-pvp">220€ <span style="font-size:10px;color:var(--lgray);">(+30€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="668">
+          <input type="checkbox" name="food" value="Bandejas Canapés Clásicos 448 uds (668€ + 70€ transporte)" data-price="668" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Canapés Clásicos 448 uds</div>
+            <div class="prod-desc">Tosta Tumaca, Pintxos Tortilla, Empanada Bonito, Mini Croissants, Tabla Quesos, Lomo con Picos</div>
+            <div class="prod-pvp">668€ <span style="font-size:10px;color:var(--lgray);">(+70€ transporte)</span></div>
+          </div>
+        </label>
+
+        <label class="prod-item" data-price="785">
+          <input type="checkbox" name="food" value="Bandejas Canapés Pro 512 uds (785€ + 70€ transporte)" data-price="785" />
+          <div class="prod-dot"></div>
+          <div class="prod-info">
+            <div class="prod-name">Canapés Pro 512 uds</div>
+            <div class="prod-desc">Tosta a cuchillo, Tortilla trufa, Empanada Bonito, Salmón, Wrap pollo, Hojaldre foie, Tartaleta</div>
+            <div class="prod-pvp">785€ <span style="font-size:10px;color:var(--lgray);">(+70€ transporte)</span></div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ AUDIOVISUAL -->
+  <div class="card">
+    <div class="card-hd"><div class="num">6</div><h2>📺 Audiovisual</h2><span class="sub">Alquiler 3 días feria</span></div>
+    <div class="card-bd">
+      <div class="prod-grid">
+
+        <label class="prod-item" data-price="35">
+          <input type="checkbox" name="av" value="Soporte Tablet (35€)" data-price="35" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Soporte Tablet</div><div class="prod-pvp">35€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="90">
+          <input type="checkbox" name="av" value="Tablet Android 11&quot; Wi-Fi 128GB (90€)" data-price="90" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Tablet 11" Wi-Fi 128GB</div><div class="prod-pvp">90€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="140">
+          <input type="checkbox" name="av" value="Apple iPad 11&quot; Wi-Fi 128GB (140€)" data-price="140" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Apple iPad 11" Wi-Fi 128GB</div><div class="prod-pvp">140€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="230">
+          <input type="checkbox" name="av" value="Apple iPad Air M3 11&quot; Wi-Fi 128GB (230€)" data-price="230" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Apple iPad Air M3 11"</div><div class="prod-pvp">230€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="240">
+          <input type="checkbox" name="av" value="Proyector XGA 3700 ANSI lumen (240€)" data-price="240" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Proyector XGA 3700 ANSI lm</div><div class="prod-pvp">240€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="190">
+          <input type="checkbox" name="av" value="Altavoz Behringer B115MP3 15&quot; 500RMS/1000W (190€)" data-price="190" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Altavoz Behringer B115MP3 15"</div><div class="prod-desc">500 RMS / 1000W</div><div class="prod-pvp">190€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="190">
+          <input type="checkbox" name="av" value="Portátil HP Win11 i5 8GB RAM 512GB SSD 15.6&quot; FHD (190€)" data-price="190" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Portátil HP Win11 i5</div><div class="prod-desc">8GB RAM · 512GB SSD · 15.6" FHD</div><div class="prod-pvp">190€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="75">
+          <input type="checkbox" name="av" value="Soporte TV Suelo (75€)" data-price="75" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Soporte TV Suelo</div><div class="prod-pvp">75€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="0">
+          <input type="checkbox" name="av" value="Pantalla interactiva táctil 55/60/75&quot; HDMI USB (presupuesto)" data-price="0" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Pantalla Táctil 55/60/75"</div><div class="prod-desc">HDMI, USB · Interactiva</div><div class="prod-pvp" style="color:var(--lgray)">Pedir presupuesto</div></div>
+        </label>
+
+        <label class="prod-item" data-price="140">
+          <input type="checkbox" name="av" value="Smart TV 32&quot; Full HD 3HDMI 2USB (140€)" data-price="140" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 32" Full HD</div><div class="prod-desc">3 HDMI · 2 USB</div><div class="prod-pvp">140€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="220">
+          <input type="checkbox" name="av" value="Smart TV 40&quot; Full HD 3HDMI 2USB (220€)" data-price="220" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 40" Full HD</div><div class="prod-desc">3 HDMI · 2 USB</div><div class="prod-pvp">220€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="320">
+          <input type="checkbox" name="av" value="Smart TV 50&quot; 4K UHD (320€)" data-price="320" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 50" 4K UHD</div><div class="prod-pvp">320€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="380">
+          <input type="checkbox" name="av" value="Smart TV 55&quot; 4K UHD (380€)" data-price="380" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 55" 4K UHD</div><div class="prod-pvp">380€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="530">
+          <input type="checkbox" name="av" value="Smart TV 65&quot; QLED 4K (530€)" data-price="530" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 65" QLED 4K</div><div class="prod-pvp">530€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="780">
+          <input type="checkbox" name="av" value="Smart TV 75&quot; QLED 4K (780€)" data-price="780" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 75" QLED 4K</div><div class="prod-pvp">780€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="1490">
+          <input type="checkbox" name="av" value="Smart TV 85&quot; 4K UHD (1490€)" data-price="1490" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 85" 4K UHD</div><div class="prod-pvp">1.490€</div></div>
+        </label>
+
+        <label class="prod-item" data-price="1830">
+          <input type="checkbox" name="av" value="Smart TV 98&quot; 4K UHD (1830€)" data-price="1830" />
+          <div class="prod-dot"></div>
+          <div class="prod-info"><div class="prod-name">Smart TV 98" 4K UHD</div><div class="prod-pvp">1.830€</div></div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ ACCESORIOS -->
+  <div class="card">
+    <div class="card-hd"><div class="num">7</div><h2>🛠️ Accesorios</h2><span class="sub">Food & Drink · IFEMA</span></div>
+    <div class="card-bd">
+
+      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Accesorios Food & Drink</p>
+      <div class="prod-grid">
+        <label class="prod-item" data-price="160"><input type="checkbox" name="acc" value="Nevera 237L (160€)" data-price="160" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Nevera 237L</div><div class="prod-pvp">160€</div></div></label>
+        <label class="prod-item" data-price="123"><input type="checkbox" name="acc" value="Nevera 118L (123€)" data-price="123" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Nevera 118L</div><div class="prod-pvp">123€</div></div></label>
+        <label class="prod-item" data-price="160"><input type="checkbox" name="acc" value="Cava de vino (160€)" data-price="160" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Cava de Vino</div><div class="prod-pvp">160€</div></div></label>
+        <label class="prod-item" data-price="175"><input type="checkbox" name="acc" value="Arcón botellero 200L (175€)" data-price="175" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Arcón Botellero 200L</div><div class="prod-pvp">175€</div></div></label>
+        <label class="prod-item" data-price="130"><input type="checkbox" name="acc" value="Arcón congelador 100L (130€)" data-price="130" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Arcón Congelador 100L</div><div class="prod-pvp">130€</div></div></label>
+        <label class="prod-item" data-price="170"><input type="checkbox" name="acc" value="Arcón congelador 200L (170€)" data-price="170" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Arcón Congelador 200L</div><div class="prod-pvp">170€</div></div></label>
+        <label class="prod-item" data-price="140"><input type="checkbox" name="acc" value="Nevera vintage carrito (140€)" data-price="140" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Nevera Vintage Carrito</div><div class="prod-pvp">140€</div></div></label>
+        <label class="prod-item" data-price="65"><input type="checkbox" name="acc" value="Fuente de chocolate (65€)" data-price="65" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Fuente Chocolate</div><div class="prod-pvp">65€</div></div></label>
+        <label class="prod-item" data-price="170"><input type="checkbox" name="acc" value="Horno Pizza accesorio (170€)" data-price="170" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Horno Pizza (solo equipo)</div><div class="prod-pvp">170€</div></div></label>
+        <label class="prod-item" data-price="120"><input type="checkbox" name="acc" value="Parrilla Sandwichera (120€)" data-price="120" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Parrilla Sandwichera</div><div class="prod-pvp">120€</div></div></label>
+        <label class="prod-item" data-price="50"><input type="checkbox" name="acc" value="Exprimidor eléctrico (50€)" data-price="50" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Exprimidor Eléctrico</div><div class="prod-pvp">50€</div></div></label>
+        <label class="prod-item" data-price="90"><input type="checkbox" name="acc" value="Enfriador 4 botellas (90€)" data-price="90" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Enfriador 4 Botellas</div><div class="prod-pvp">90€</div></div></label>
+        <label class="prod-item" data-price="80"><input type="checkbox" name="acc" value="Air Fryer doble compartimento (80€)" data-price="80" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Air Fryer Doble Compartimento</div><div class="prod-pvp">80€</div></div></label>
+        <label class="prod-item" data-price="140"><input type="checkbox" name="acc" value="Cafetera Profesional Nespresso (140€)" data-price="140" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Cafetera Profesional Nespresso</div><div class="prod-pvp">140€</div></div></label>
+        <label class="prod-item" data-price="85"><input type="checkbox" name="acc" value="Calentador de agua 1,5L (85€)" data-price="85" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Calentador Agua 1,5L</div><div class="prod-pvp">85€</div></div></label>
+        <label class="prod-item" data-price="320"><input type="checkbox" name="acc" value="Carrito palomitas profesional (320€)" data-price="320" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Carrito Palomitas Profesional</div><div class="prod-pvp">320€</div></div></label>
+        <label class="prod-item" data-price="320"><input type="checkbox" name="acc" value="Carrito perritos calientes (320€)" data-price="320" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Carrito Perritos Calientes</div><div class="prod-pvp">320€</div></div></label>
+        <label class="prod-item" data-price="240"><input type="checkbox" name="acc" value="Máquina Granizados (solo equipo) (240€)" data-price="240" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Máquina Granizados (solo equipo)</div><div class="prod-pvp">240€</div></div></label>
+      </div>
+
+      <hr class="hr" />
+      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Accesorios IFEMA</p>
+      <div class="prod-grid">
+        <label class="prod-item" data-price="90"><input type="checkbox" name="acc" value="Mesa de metal con mantel (90€)" data-price="90" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Mesa Metal con Mantel</div><div class="prod-pvp">90€</div></div></label>
+        <label class="prod-item" data-price="200"><input type="checkbox" name="acc" value="Impresora láser b/n (200€)" data-price="200" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Impresora Láser B/N</div><div class="prod-pvp">200€</div></div></label>
+        <label class="prod-item" data-price="250"><input type="checkbox" name="acc" value="Impresora láser Color (250€)" data-price="250" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Impresora Láser Color</div><div class="prod-pvp">250€</div></div></label>
+        <label class="prod-item" data-price="50"><input type="checkbox" name="acc" value="Ruleta con trípode juego IFEMA (50€)" data-price="50" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Ruleta con Trípode</div><div class="prod-pvp">50€</div></div></label>
+        <label class="prod-item" data-price="50"><input type="checkbox" name="acc" value="Pizarra blanca reversible (50€)" data-price="50" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Pizarra Blanca Reversible</div><div class="prod-pvp">50€</div></div></label>
+        <label class="prod-item" data-price="90"><input type="checkbox" name="acc" value="Tablet Android 10,1&quot; Wifi (90€)" data-price="90" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Tablet Android 10,1" Wifi</div><div class="prod-pvp">90€</div></div></label>
+        <label class="prod-item" data-price="100"><input type="checkbox" name="acc" value="Microondas 900W (100€)" data-price="100" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Microondas 900W</div><div class="prod-pvp">100€</div></div></label>
+        <label class="prod-item" data-price="40"><input type="checkbox" name="acc" value="Pie champanera (40€)" data-price="40" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Pie Champanera</div><div class="prod-pvp">40€</div></div></label>
+        <label class="prod-item" data-price="40"><input type="checkbox" name="acc" value="Pantalla proyección 2x2 (40€)" data-price="40" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Pantalla Proyección 2x2</div><div class="prod-pvp">40€</div></div></label>
+        <label class="prod-item" data-price="220"><input type="checkbox" name="acc" value="Loncheadora profesional (220€)" data-price="220" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Loncheadora Profesional</div><div class="prod-pvp">220€</div></div></label>
+        <label class="prod-item" data-price="160"><input type="checkbox" name="acc" value="Placa de inducción doble (160€)" data-price="160" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Placa de Inducción Doble</div><div class="prod-pvp">160€</div></div></label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⑧ COMENTARIOS -->
+  <div class="card">
+    <div class="card-hd"><div class="num">8</div><h2>Notas adicionales</h2></div>
+    <div class="card-bd">
+      <div class="g2">
+        <div class="f full">
+          <label>¿Algo que debamos saber? Requisitos especiales, fechas de montaje, etc.</label>
+          <textarea name="notas" placeholder="Escribe aquí cualquier detalle adicional: fechas de montaje y desmontaje, accesos al stand, alergias alimentarias, personalizaciones de producto..."></textarea>
         </div>
-        <hr class="divider" />
-        <div class="field full">
+        <div class="f">
           <label>¿Cómo nos conociste?</label>
           <select name="como_conociste">
             <option value="">Selecciona...</option>
             <option>Email / Newsletter</option>
             <option>LinkedIn</option>
-            <option>Instagram / Redes Sociales</option>
-            <option>Recomendación de un contacto</option>
-            <option>Feria / Evento anterior</option>
-            <option>Búsqueda en Google</option>
-            <option>Prensa / Publicación</option>
+            <option>Recomendación</option>
+            <option>Feria anterior</option>
+            <option>Google</option>
+            <option>Redes Sociales</option>
             <option>Otro</option>
           </select>
         </div>
-        <hr class="divider" />
-        <div class="field full">
-          <label class="check-row" style="margin-top:4px;">
+        <div class="f">
+          <label>¿Ya has trabajado con Gribeer?</label>
+          <div class="pills" style="margin-top:4px;">
+            <div class="pill"><input type="radio" name="cliente" id="cl1" value="Sí, ya soy cliente" /><label for="cl1">Sí, ya soy cliente</label></div>
+            <div class="pill"><input type="radio" name="cliente" id="cl2" value="No, es mi primera vez" /><label for="cl2">No, primera vez</label></div>
+          </div>
+        </div>
+        <div class="f full" style="margin-top:6px;">
+          <label class="ck">
             <input type="checkbox" name="acepta_privacidad" required />
-            <span class="check-box"></span>
-            <span class="check-label" style="font-size:13px;">He leído y acepto la <a href="https://gribeer.com/en/privacy-policy/" target="_blank" style="color:var(--gold);font-weight:600;">Política de Privacidad</a> de Gribeer y consiento el tratamiento de mis datos para recibir información comercial. <span class="req">*</span></span>
+            <span class="ck-box"></span>
+            <span class="ck-label" style="font-size:12.5px;">He leído y acepto la <a href="https://gribeer.com/en/privacy-policy/" target="_blank" style="color:var(--gold);font-weight:600">Política de Privacidad</a> de Gribeer y consiento el uso de mis datos para recibir esta propuesta. <span class="req">*</span></span>
           </label>
         </div>
       </div>
     </div>
-
-    <!-- SUBMIT -->
-    <div class="submit-area">
-      <button type="submit" class="btn-submit">Enviar Solicitud →</button>
-      <p class="form-note">* Campos obligatorios. Tu información está protegida y nunca se compartirá con terceros.</p>
-    </div>
-
-  </form>
-
-  <!-- SUCCESS -->
-  <div id="success-msg">
-    <div class="check-icon">✓</div>
-    <h3>¡Solicitud enviada con éxito!</h3>
-    <p>Gracias por tu interés en Gribeer.<br />Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo en menos de <strong style="color:var(--gold);">48 horas</strong>.<br /><br />Mientras tanto, puedes visitar <a href="https://gribeer.com/en/" target="_blank">gribeer.com</a> para conocer más sobre nuestros productos.</p>
   </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-area">
+    <button type="submit" class="btn" id="submit-btn">Solicitar Presupuesto →</button>
+    <p class="form-note">* Campos obligatorios. Recibirás tu propuesta en menos de 24 h.</p>
+  </div>
+
+</form>
+
+<!-- SUCCESS -->
+<div id="ok">
+  <div class="ok-icon">✓</div>
+  <h3>¡Solicitud recibida!</h3>
+  <p>Gracias por confiar en Gribeer.<br />Nuestro equipo revisará tu selección y te enviará una propuesta detallada en menos de <strong style="color:var(--gold)">24 horas</strong>.<br /><br />Mientras tanto, visita <a href="https://gribeer.com/en/" target="_blank">gribeer.com</a></p>
 </div>
 
+</div><!-- /wrap -->
+
 <footer>
-  <p>© 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Todos los derechos reservados. IFEMACC 2026.</p>
+  <p>© 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Servicios para Ferias y Eventos · IFEMACC 2026</p>
 </footer>
 
 <script>
-  // Sync slider → hidden input
-  const slider = document.getElementById('volSlider');
-  const hidden = document.getElementById('volHidden');
-  slider.addEventListener('input', () => { hidden.value = slider.value + ' hl'; });
+  /* ── PROD-ITEM toggle ─────────────────────── */
+  document.querySelectorAll('.prod-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const cb = item.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      item.classList.toggle('selected', cb.checked);
+      updateTotal();
+    });
+  });
 
-  // Form submit
-  document.getElementById('gribeer-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  /* ── SELECT price parser ─────────────────── */
+  document.querySelectorAll('select[data-price]').forEach(sel => {
+    sel.addEventListener('change', updateTotal);
+  });
 
-    const form = e.target;
-    const btn  = form.querySelector('.btn-submit');
+  /* ── TOTAL ────────────────────────────────── */
+  function updateTotal() {
+    let total = 0;
 
-    // Basic validation
-    const required = form.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach(el => {
-      el.style.borderColor = '';
-      if (el.type === 'checkbox' && !el.checked) {
-        valid = false;
-      } else if (el.type !== 'checkbox' && !el.value.trim()) {
-        el.style.borderColor = '#e53e3e';
-        valid = false;
-      }
+    // prod-items
+    document.querySelectorAll('.prod-item input[type="checkbox"]:checked').forEach(cb => {
+      total += parseInt(cb.dataset.price || 0, 10);
     });
 
-    if (!valid) {
-      alert('Por favor, completa todos los campos obligatorios.');
-      return;
+    // selects with data-price="1" (value encodes price as "price|label")
+    document.querySelectorAll('select[data-price="1"]').forEach(sel => {
+      const val = sel.value.split('|')[0];
+      total += parseInt(val || 0, 10);
+    });
+
+    // barril_extra: value is count, multiply by 138
+    const extra = document.querySelector('select[name="barril_extra"]');
+    if (extra) total += parseInt(extra.value || 0, 10) * 138;
+
+    // grifo supplement
+    const grifoTipo = document.querySelector('input[name="grifo_tipo"]:checked');
+    if (grifoTipo) {
+      if (grifoTipo.value.includes('65')) total += 65;
+      if (grifoTipo.value.includes('130')) total += 130;
     }
 
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
+    document.getElementById('total-display').textContent =
+      total.toLocaleString('es-ES') + ' €';
+  }
+
+  // radio pills for grifo
+  document.querySelectorAll('input[name="grifo_tipo"]').forEach(r => r.addEventListener('change', updateTotal));
+
+  /* ── FORM SUBMIT ─────────────────────────── */
+  document.getElementById('gf').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+
+    // Validate required
+    const reqs = this.querySelectorAll('[required]');
+    let ok = true;
+    reqs.forEach(el => {
+      el.style.borderColor = '';
+      if (el.type === 'checkbox' && !el.checked) { ok = false; }
+      else if (el.type !== 'checkbox' && !el.value.trim()) { el.style.borderColor = '#e53e3e'; ok = false; }
+    });
+    if (!ok) { alert('Por favor, completa todos los campos obligatorios.'); return; }
+
+    btn.disabled = true; btn.textContent = 'Enviando...';
 
     // Build payload
-    const data = {};
-    const fd   = new FormData(form);
+    const fd = new FormData(this);
+    const data = { timestamp: new Date().toISOString(), fuente: 'Formulario IFEMACC 2026 – Gribeer' };
 
-    // Multi-checkbox fields
-    const multiFields = {};
-    form.querySelectorAll('input[type="checkbox"][name="productos"]:checked').forEach(cb => {
-      if (!multiFields.productos) multiFields.productos = [];
-      multiFields.productos.push(cb.value);
+    // scalar fields
+    ['nombre','apellidos','empresa','cargo','email','telefono','stand','fechas',
+     'grifo_tipo','marca_cerveza','barril_pack','pack_vasos','notas','como_conociste','cliente']
+      .forEach(k => { data[k] = fd.get(k) || ''; });
+
+    // barril extra
+    const extraSel = this.querySelector('select[name="barril_extra"]');
+    data.barril_extra = extraSel ? extraSel.value + ' barriles adicionales' : '';
+
+    // extras checkboxes
+    data.logo_grifo    = this.querySelector('[name="ext_logo_grifo"]:checked')  ? 'Sí' : 'No';
+    data.camareros     = this.querySelector('[name="ext_camareros"]:checked')   ? 'Sí' : 'No';
+    data.privacidad    = this.querySelector('[name="acepta_privacidad"]:checked') ? 'Aceptada' : 'No';
+
+    // product selections
+    ['beb','mob','food','av','acc'].forEach(name => {
+      const selected = [...this.querySelectorAll(`input[name="${name}"]:checked`)].map(c => c.value);
+      data['productos_' + name] = selected.join(' | ') || 'Ninguno';
     });
-    form.querySelectorAll('input[type="checkbox"][name="formato"]:checked').forEach(cb => {
-      if (!multiFields.formato) multiFields.formato = [];
-      multiFields.formato.push(cb.value);
-    });
 
-    fd.forEach((v, k) => { if (k !== 'productos' && k !== 'formato') data[k] = v; });
-    if (multiFields.productos) data.productos = multiFields.productos.join(', ');
-    if (multiFields.formato)   data.formato   = multiFields.formato.join(', ');
-
-    data.timestamp = new Date().toISOString();
-    data.fuente    = 'Formulario IFEMACC 2026';
+    // total
+    data.presupuesto_estimado = document.getElementById('total-display').textContent;
 
     try {
       await fetch('https://1-n8n.2e26n3.easypanel.host/webhook-test/9ad22ae6-d655-4072-8d7f-d78dce32348f', {
@@ -726,19 +1047,15 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-
-      form.style.display = 'none';
-      const msg = document.getElementById('success-msg');
+      this.style.display = 'none';
+      const msg = document.getElementById('ok');
       msg.style.display = 'block';
       msg.scrollIntoView({ behavior: 'smooth' });
-
-    } catch (err) {
-      btn.disabled = false;
-      btn.textContent = 'Enviar Solicitud →';
-      alert('Error al enviar el formulario. Por favor, inténtalo de nuevo o contacta con nosotros directamente.');
+    } catch {
+      btn.disabled = false; btn.textContent = 'Solicitar Presupuesto →';
+      alert('Error al enviar. Por favor, inténtalo de nuevo.');
     }
   });
 </script>
-
 </body>
 </html>
