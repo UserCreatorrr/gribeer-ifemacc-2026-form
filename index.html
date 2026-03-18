@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gribeer – IFEMACC 2026 | Solicitud de Servicios</title>
+  <title>Gribeer – Solicitud de Servicios para tu Evento</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,39 +32,18 @@
       display: flex; flex-direction: column; align-items: center; gap: 14px;
     }
 
-    .header-logo {
-      position: relative;
-      padding: 14px 28px;
-      border-radius: 16px;
-      background: radial-gradient(ellipse 80% 60% at 50% 50%,
-        rgba(250,168,4,.22) 0%,
-        rgba(250,168,4,.10) 45%,
-        transparent 100%);
-      box-shadow:
-        0 0 32px 8px rgba(250,168,4,.18),
-        0 0 8px  2px rgba(250,168,4,.12);
-    }
-
-    /* animated shiny sweep */
-    .header-logo::after {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 16px;
-      background: linear-gradient(115deg,
-        transparent 30%,
-        rgba(255,220,80,.18) 50%,
-        transparent 70%);
-      background-size: 200% 100%;
-      animation: logoShine 3s ease-in-out infinite;
-    }
+    .header-logo { position: relative; display: inline-flex; }
 
     @keyframes logoShine {
-      0%   { background-position: 200% 0; }
-      50%  { background-position: -50%  0; }
-      100% { background-position: 200% 0; }
+      0%   { filter: drop-shadow(0 0 6px rgba(250,168,4,.5))  drop-shadow(0 0 2px rgba(255,220,80,.3)); }
+      50%  { filter: drop-shadow(0 0 18px rgba(250,168,4,.9)) drop-shadow(0 0 8px rgba(255,220,80,.6)) drop-shadow(0 0 2px #fff8); }
+      100% { filter: drop-shadow(0 0 6px rgba(250,168,4,.5))  drop-shadow(0 0 2px rgba(255,220,80,.3)); }
     }
 
-    .header-logo img { height: 68px; width: auto; position: relative; z-index: 1; filter: drop-shadow(0 0 6px rgba(250,168,4,.35)); }
+    .header-logo img {
+      height: 88px; width: auto; position: relative; z-index: 1;
+      animation: logoShine 3s ease-in-out infinite;
+    }
 
     .header-tag {
       background: var(--gold); color: var(--black);
@@ -323,9 +302,9 @@
 <header>
   <div class="header-inner">
     <div class="header-logo"><img src="logo.png" alt="Gribeer" /></div>
-    <span class="header-tag">IFEMACC 2026</span>
-    <h1 class="header-title">Solicitud de Servicios para <em>tu Stand</em></h1>
-    <p class="header-sub">Selecciona los servicios que necesitas para IFEMA. Nuestro equipo preparará tu presupuesto personalizado en menos de 24 h.</p>
+    <span class="header-tag">Ferias · Eventos · Congresos</span>
+    <h1 class="header-title">Solicitud de Servicios para <em>tu Evento</em></h1>
+    <p class="header-sub">Selecciona los servicios que necesitas. Nuestro equipo preparará tu presupuesto personalizado en menos de 24 h.</p>
   </div>
 </header>
 <div class="gold-bar"></div>
@@ -336,7 +315,7 @@
 
   <!-- ⓪ DOSSIER PDF -->
   <div class="card">
-    <div class="card-hd"><div class="num">📄</div><h2>Dossier de Servicios IFEMACC 2026</h2><span class="sub">Léelo antes de seleccionar</span></div>
+    <div class="card-hd"><div class="num">📄</div><h2>Dossier de Servicios Gribeer 2026</h2><span class="sub">Léelo antes de seleccionar</span></div>
     <div class="card-bd" style="padding:16px;">
       <p style="font-size:12.5px;color:var(--lgray);margin-bottom:12px;">Consulta nuestro catálogo completo de servicios y después selecciona lo que necesitas en los apartados de abajo.</p>
       <div class="pdf-wrap">
@@ -344,7 +323,7 @@
           src="https://drive.google.com/file/d/1YYMEJMSUCOCIrNCxzWnHog0O7F72COZM/preview"
           class="pdf-frame"
           allow="autoplay"
-          title="Dossier Gribeer IFEMACC 2026"
+          title="Dossier Gribeer 2026"
         ></iframe>
         <div class="pdf-controls">
           <a class="pdf-btn" href="https://drive.google.com/file/d/1YYMEJMSUCOCIrNCxzWnHog0O7F72COZM/view" target="_blank">↗ Abrir en pantalla completa</a>
@@ -365,7 +344,7 @@
         <div class="f"><label>Cargo</label><input name="cargo" type="text" placeholder="Ej: Director de Marketing" /></div>
         <div class="f"><label>Email <span class="req">*</span></label><input name="email" type="email" placeholder="tu@empresa.com" required /></div>
         <div class="f"><label>Teléfono / WhatsApp <span class="req">*</span></label><input name="telefono" type="tel" placeholder="+34 600 000 000" required /></div>
-        <div class="f"><label>Número de stand en IFEMA</label><input name="stand" type="text" placeholder="Ej: Hall 6 · B-204" /></div>
+        <div class="f"><label>Nombre / Ubicación del evento</label><input name="stand" type="text" placeholder="Ej: Feria Madrid · Hall 6, Evento empresa XYZ" /></div>
         <div class="f"><label>Fechas del evento <span class="req">*</span></label><input name="fechas" type="text" placeholder="Ej: 10-12 junio 2026" required /></div>
       </div>
     </div>
@@ -373,7 +352,7 @@
 
   <!-- ② CERVEZA & GRIFOS -->
   <div class="card">
-    <div class="card-hd"><div class="num">2</div><h2>🍺 Cerveza & Grifos</h2><span class="sub">Alquiler en IFEMA</span></div>
+    <div class="card-hd"><div class="num">2</div><h2>🍺 Cerveza & Grifos</h2><span class="sub">Alquiler para tu evento</span></div>
     <div class="card-bd">
 
       <!-- Pack grifo -->
@@ -553,7 +532,7 @@
 
   <!-- ④ MOBILIARIO -->
   <div class="card">
-    <div class="card-hd"><div class="num">4</div><h2>🪑 Mobiliario IFEMA</h2></div>
+    <div class="card-hd"><div class="num">4</div><h2>🪑 Mobiliario</h2></div>
     <div class="card-bd">
       <div class="prod-grid">
 
@@ -603,7 +582,7 @@
 
   <!-- ⑤ CATERING & FOOD -->
   <div class="card">
-    <div class="card-hd"><div class="num">5</div><h2>🍽️ Catering & Food</h2><span class="sub">Para tu stand</span></div>
+    <div class="card-hd"><div class="num">5</div><h2>🍽️ Catering & Food</h2><span class="sub">Para tu evento</span></div>
     <div class="card-bd">
 
       <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Productos Gourmet</p>
@@ -939,7 +918,7 @@
 
   <!-- ⑦ ACCESORIOS -->
   <div class="card">
-    <div class="card-hd"><div class="num">7</div><h2>🛠️ Accesorios</h2><span class="sub">Food & Drink · IFEMA</span></div>
+    <div class="card-hd"><div class="num">7</div><h2>🛠️ Accesorios</h2><span class="sub">Food & Drink · Evento</span></div>
     <div class="card-bd">
 
       <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Accesorios Food & Drink</p>
@@ -965,12 +944,12 @@
       </div>
 
       <hr class="hr" />
-      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Accesorios IFEMA</p>
+      <p style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px;">Accesorios para el Evento</p>
       <div class="prod-grid">
         <label class="prod-item" data-price="90"><input type="checkbox" name="acc" value="Mesa de metal con mantel (90€)" data-price="90" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Mesa Metal con Mantel</div><div class="prod-pvp">90€</div></div></label>
         <label class="prod-item" data-price="200"><input type="checkbox" name="acc" value="Impresora láser b/n (200€)" data-price="200" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Impresora Láser B/N</div><div class="prod-pvp">200€</div></div></label>
         <label class="prod-item" data-price="250"><input type="checkbox" name="acc" value="Impresora láser Color (250€)" data-price="250" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Impresora Láser Color</div><div class="prod-pvp">250€</div></div></label>
-        <label class="prod-item" data-price="50"><input type="checkbox" name="acc" value="Ruleta con trípode juego IFEMA (50€)" data-price="50" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Ruleta con Trípode</div><div class="prod-pvp">50€</div></div></label>
+        <label class="prod-item" data-price="50"><input type="checkbox" name="acc" value="Ruleta con trípode (50€)" data-price="50" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Ruleta con Trípode</div><div class="prod-pvp">50€</div></div></label>
         <label class="prod-item" data-price="50"><input type="checkbox" name="acc" value="Pizarra blanca reversible (50€)" data-price="50" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Pizarra Blanca Reversible</div><div class="prod-pvp">50€</div></div></label>
         <label class="prod-item" data-price="90"><input type="checkbox" name="acc" value="Tablet Android 10,1&quot; Wifi (90€)" data-price="90" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Tablet Android 10,1" Wifi</div><div class="prod-pvp">90€</div></div></label>
         <label class="prod-item" data-price="100"><input type="checkbox" name="acc" value="Microondas 900W (100€)" data-price="100" /><div class="prod-dot"></div><div class="prod-info"><div class="prod-name">Microondas 900W</div><div class="prod-pvp">100€</div></div></label>
@@ -990,7 +969,7 @@
       <div class="g2">
         <div class="f full">
           <label>¿Algo que debamos saber? Requisitos especiales, fechas de montaje, etc.</label>
-          <textarea name="notas" placeholder="Escribe aquí cualquier detalle adicional: fechas de montaje y desmontaje, accesos al stand, alergias alimentarias, personalizaciones de producto..."></textarea>
+          <textarea name="notas" placeholder="Escribe aquí cualquier detalle adicional: fechas de montaje y desmontaje, tipo de evento, aforo estimado, alergias alimentarias, personalizaciones de producto..."></textarea>
         </div>
         <div class="f">
           <label>¿Cómo nos conociste?</label>
@@ -1068,7 +1047,7 @@
     </a>
   </div>
   <div class="footer-copy">
-    © 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Servicios para Ferias y Eventos · IFEMACC 2026
+    © 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Servicios para Ferias, Eventos y Congresos
   </div>
 </footer>
 
@@ -1140,7 +1119,7 @@
 
     // Build payload
     const fd = new FormData(this);
-    const data = { timestamp: new Date().toISOString(), fuente: 'Formulario IFEMACC 2026 – Gribeer' };
+    const data = { timestamp: new Date().toISOString(), fuente: 'Formulario Servicios 2026 – Gribeer' };
 
     // scalar fields
     ['nombre','apellidos','empresa','cargo','email','telefono','stand','fechas',
