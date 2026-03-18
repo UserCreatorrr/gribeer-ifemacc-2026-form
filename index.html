@@ -406,23 +406,24 @@
 
       <hr class="hr" />
 
-      <div class="g2">
-        <div class="f"><label>Pack de barriles</label>
-          <select name="barril_pack" data-price="1">
-            <option value="0|Sin barriles">Sin barriles</option>
-            <option value="198|Grifo + 1 Barril 30L – 198€">Grifo + 1 Barril 30L – 198€</option>
-            <option value="276|Grifo + 2 Barriles 30L – 276€">Grifo + 2 Barriles 30L – 276€</option>
-          </select>
+      <div class="f full"><label>Pack de barriles</label>
+        <div class="pills" style="margin-top:6px;">
+          <div class="pill"><input type="radio" name="barril_pack" id="bp0" value="0|Sin barriles" checked /><label for="bp0">Sin barriles</label></div>
+          <div class="pill"><input type="radio" name="barril_pack" id="bp1" value="198|Grifo + 1 Barril 30L – 198€" /><label for="bp1">Grifo + 1 Barril 30L &nbsp;<strong>198€</strong></label></div>
+          <div class="pill"><input type="radio" name="barril_pack" id="bp2" value="276|Grifo + 2 Barriles 30L – 276€" /><label for="bp2">Grifo + 2 Barriles 30L &nbsp;<strong>276€</strong></label></div>
         </div>
+      </div>
+
+      <div class="g2" style="margin-top:14px;">
         <div class="f"><label>Barriles adicionales (30L · 138€ c/u)</label>
-          <select name="barril_extra" data-price="138">
-            <option value="0">0 barriles adicionales</option>
-            <option value="1">+1 barril – 138€</option>
-            <option value="2">+2 barriles – 276€</option>
-            <option value="3">+3 barriles – 414€</option>
-            <option value="4">+4 barriles – 552€</option>
-            <option value="5">+5 barriles – 690€</option>
-          </select>
+          <div class="pills" style="margin-top:6px;">
+            <div class="pill"><input type="radio" name="barril_extra" id="be0" value="0" checked /><label for="be0">Ninguno</label></div>
+            <div class="pill"><input type="radio" name="barril_extra" id="be1" value="1" /><label for="be1">+1 &nbsp;<strong>138€</strong></label></div>
+            <div class="pill"><input type="radio" name="barril_extra" id="be2" value="2" /><label for="be2">+2 &nbsp;<strong>276€</strong></label></div>
+            <div class="pill"><input type="radio" name="barril_extra" id="be3" value="3" /><label for="be3">+3 &nbsp;<strong>414€</strong></label></div>
+            <div class="pill"><input type="radio" name="barril_extra" id="be4" value="4" /><label for="be4">+4 &nbsp;<strong>552€</strong></label></div>
+            <div class="pill"><input type="radio" name="barril_extra" id="be5" value="5" /><label for="be5">+5 &nbsp;<strong>690€</strong></label></div>
+          </div>
         </div>
         <div class="f"><label>Marca de cerveza</label>
           <select name="marca_cerveza">
@@ -433,14 +434,15 @@
             <option>Indiferente</option>
           </select>
         </div>
-        <div class="f"><label>Pack de vasos</label>
-          <select name="pack_vasos" data-price="1">
-            <option value="0|Sin vasos">Sin vasos</option>
-            <option value="25|Pack 100 vasos 0,33cl – 25€">Pack 100 vasos 0,33cl – 25€</option>
-            <option value="35|Pack 150 vasos 0,33cl – 35€">Pack 150 vasos 0,33cl – 35€</option>
-            <option value="40|Pack 200 vasos 0,33cl – 40€">Pack 200 vasos 0,33cl – 40€</option>
-            <option value="0|Vasos de cristal (presupuesto)">Vasos de cristal (presupuesto)</option>
-          </select>
+      </div>
+
+      <div class="f full" style="margin-top:14px;"><label>Pack de vasos</label>
+        <div class="pills" style="margin-top:6px;">
+          <div class="pill"><input type="radio" name="pack_vasos" id="pv0" value="0|Sin vasos" checked /><label for="pv0">Sin vasos</label></div>
+          <div class="pill"><input type="radio" name="pack_vasos" id="pv1" value="25|Pack 100 vasos 0,33cl – 25€" /><label for="pv1">100 vasos 0,33cl &nbsp;<strong>25€</strong></label></div>
+          <div class="pill"><input type="radio" name="pack_vasos" id="pv2" value="35|Pack 150 vasos 0,33cl – 35€" /><label for="pv2">150 vasos 0,33cl &nbsp;<strong>35€</strong></label></div>
+          <div class="pill"><input type="radio" name="pack_vasos" id="pv3" value="40|Pack 200 vasos 0,33cl – 40€" /><label for="pv3">200 vasos 0,33cl &nbsp;<strong>40€</strong></label></div>
+          <div class="pill"><input type="radio" name="pack_vasos" id="pv4" value="0|Vasos de cristal (presupuesto)" /><label for="pv4">Vasos de cristal (presupuesto)</label></div>
         </div>
       </div>
 
@@ -1099,9 +1101,8 @@
   });
 
   /* ── SELECT price parser ─────────────────── */
-  document.querySelectorAll('select[data-price]').forEach(sel => {
-    sel.addEventListener('change', updateTotal);
-  });
+  document.querySelectorAll('input[name="barril_pack"], input[name="barril_extra"], input[name="pack_vasos"]')
+    .forEach(r => r.addEventListener('change', updateTotal));
 
   /* ── TOTAL ────────────────────────────────── */
   function updateTotal() {
@@ -1112,15 +1113,15 @@
       total += parseInt(cb.dataset.price || 0, 10);
     });
 
-    // selects with data-price="1" (value encodes price as "price|label")
-    document.querySelectorAll('select[data-price="1"]').forEach(sel => {
-      const val = sel.value.split('|')[0];
-      total += parseInt(val || 0, 10);
+    // radio groups with encoded price "price|label"
+    ['barril_pack','pack_vasos'].forEach(name => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      if (checked) total += parseInt((checked.value || '0').split('|')[0], 10);
     });
 
-    // barril_extra: value is count, multiply by 138
-    const extra = document.querySelector('select[name="barril_extra"]');
-    if (extra) total += parseInt(extra.value || 0, 10) * 138;
+    // barril_extra radios: value is count, multiply by 138
+    const extraR = document.querySelector('input[name="barril_extra"]:checked');
+    if (extraR) total += parseInt(extraR.value || 0, 10) * 138;
 
     // grifo supplement
     const grifoTipo = document.querySelector('input[name="grifo_tipo"]:checked');
@@ -1176,9 +1177,9 @@
      'grifo_tipo','marca_cerveza','barril_pack','pack_vasos','notas','como_conociste','cliente']
       .forEach(k => { data[k] = fd.get(k) || ''; });
 
-    // barril extra
-    const extraSel = this.querySelector('select[name="barril_extra"]');
-    data.barril_extra = extraSel ? extraSel.value + ' barriles adicionales' : '';
+    // barril extra (radio)
+    const extraR = this.querySelector('input[name="barril_extra"]:checked');
+    data.barril_extra = extraR ? extraR.value + ' barriles adicionales' : '0 barriles adicionales';
 
     // extras checkboxes
     data.logo_grifo    = this.querySelector('[name="ext_logo_grifo"]:checked')  ? 'Sí' : 'No';
