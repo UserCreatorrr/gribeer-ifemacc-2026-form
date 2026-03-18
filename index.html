@@ -1192,7 +1192,7 @@
     data.presupuesto_estimado = document.getElementById('total-display').textContent;
 
     try {
-      const res = await fetch('/api/submit', {
+      const res = await fetch('https://1-n8n.2e26n3.easypanel.host/webhook-test/9ad22ae6-d655-4072-8d7f-d78dce32348f', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
