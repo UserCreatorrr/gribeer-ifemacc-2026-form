@@ -225,6 +225,31 @@
     .total-num { font-size: 22px; font-weight: 700; color: var(--gold); }
     .total-note { font-size: 11px; color: rgba(255,255,255,.35); }
 
+    /* ── PDF VIEWER ──────────────────────────── */
+    .pdf-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+    .pdf-frame {
+      width: 100%;
+      /* portrait A4 ratio ≈ 1:1.414 */
+      height: min(75vh, 700px);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: #f0f0f0;
+      display: block;
+    }
+
+    .pdf-controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    .pdf-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 20px; border-radius: 30px; font-size: 12.5px; font-weight: 600;
+      text-decoration: none; cursor: pointer; transition: all .18s;
+      background: var(--gold); color: var(--black); border: 2px solid var(--gold);
+    }
+    .pdf-btn:hover { background: var(--gold-dk); border-color: var(--gold-dk); }
+    .pdf-btn--outline { background: transparent; color: var(--black); border: 2px solid var(--border); }
+    .pdf-btn--outline:hover { border-color: var(--gold); color: var(--gold); background: transparent; }
+
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 600px) {
       .g2, .g3, .prod-grid { grid-template-columns: 1fr; }
@@ -257,6 +282,26 @@
 <!-- FORM -->
 <div class="wrap">
 <form id="gf" novalidate>
+
+  <!-- ⓪ DOSSIER PDF -->
+  <div class="card">
+    <div class="card-hd"><div class="num">📄</div><h2>Dossier de Servicios IFEMACC 2026</h2><span class="sub">Léelo antes de seleccionar</span></div>
+    <div class="card-bd" style="padding:16px;">
+      <p style="font-size:12.5px;color:var(--lgray);margin-bottom:12px;">Consulta nuestro catálogo completo de servicios y después selecciona lo que necesitas en los apartados de abajo.</p>
+      <div class="pdf-wrap">
+        <iframe
+          src="https://drive.google.com/file/d/1YYMEJMSUCOCIrNCxzWnHog0O7F72COZM/preview"
+          class="pdf-frame"
+          allow="autoplay"
+          title="Dossier Gribeer IFEMACC 2026"
+        ></iframe>
+        <div class="pdf-controls">
+          <a class="pdf-btn" href="https://drive.google.com/file/d/1YYMEJMSUCOCIrNCxzWnHog0O7F72COZM/view" target="_blank">↗ Abrir en pantalla completa</a>
+          <a class="pdf-btn pdf-btn--outline" href="https://drive.google.com/uc?export=download&id=1YYMEJMSUCOCIrNCxzWnHog0O7F72COZM" target="_blank">⬇ Descargar PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ① DATOS CONTACTO -->
   <div class="card">
