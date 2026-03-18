@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gribeer – IFEMACC 2026 | Formulario de Participación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:   #FAA804;
+      --black:  #131313;
+      --dark:   #1e1e1e;
+      --gray:   #54595F;
+      --light:  #F5F5F5;
+      --white:  #FFFFFF;
+      --border: #e0e0e0;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--light);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--black);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 36px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logo img {
+      height: 64px;
+      width: auto;
+      filter: brightness(1);
+    }
+
+    .header-badge {
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+    }
+
+    .header-title {
+      font-family: 'Roboto Slab', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .header-title span { color: var(--gold); }
+
+    .header-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    /* decorative strip */
+    .gold-strip {
+      height: 5px;
+      background: linear-gradient(90deg, var(--black) 0%, var(--gold) 40%, var(--black) 100%);
+    }
+
+    /* ── FORM WRAPPER ── */
+    .form-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    /* ── SECTION CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .card-header {
+      background: var(--black);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-header .step {
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 12px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-header h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .card-body { padding: 24px; }
+
+    /* ── GRID ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .full   { grid-column: 1 / -1; }
+
+    /* ── FIELD ── */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .field label .req { color: var(--gold); margin-left: 2px; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(250,168,4,.15);
+    }
+
+    .field textarea { resize: vertical; min-height: 100px; }
+
+    .field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FAA804' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    /* ── CHECKBOX GROUP ── */
+    .check-group { display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
+    .check-row   { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+
+    .check-row input[type="checkbox"] { display: none; }
+
+    .check-box {
+      width: 20px; height: 20px; flex-shrink: 0;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      transition: all .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .check-row input[type="checkbox"]:checked + .check-box {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .check-row input[type="checkbox"]:checked + .check-box::after {
+      content: '';
+      display: block;
+      width: 5px; height: 9px;
+      border: 2px solid var(--black);
+      border-top: none; border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+
+    .check-label { font-size: 14px; color: var(--black); }
+
+    /* ── RADIO GROUP ── */
+    .radio-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+
+    .radio-pill input[type="radio"] { display: none; }
+    .radio-pill label {
+      display: inline-flex; align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+      color: var(--gray);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .radio-pill input[type="radio"]:checked + label {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    /* ── VOLUME SLIDER ── */
+    .slider-wrap { display: flex; flex-direction: column; gap: 8px; }
+
+    .slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray); }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%; height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--black);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+
+    .slider-value {
+      font-weight: 700; font-size: 16px; color: var(--gold);
+      text-align: center;
+    }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+    /* ── SUBMIT ── */
+    .submit-area { text-align: center; margin-top: 32px; }
+
+    .btn-submit {
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 56px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: .5px;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(250,168,4,.4);
+    }
+
+    .btn-submit:hover { background: #e09600; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(250,168,4,.5); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .form-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    /* ── SUCCESS ── */
+    #success-msg {
+      display: none;
+      background: var(--black);
+      border-radius: var(--radius);
+      padding: 48px 32px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #success-msg .check-icon {
+      width: 64px; height: 64px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+    }
+
+    #success-msg h3 { color: var(--white); font-size: 22px; margin-bottom: 10px; }
+    #success-msg p  { color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,.4);
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .header-title { font-size: 22px; }
+      .card-body { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="logo.png" alt="Gribeer" />
+    </div>
+    <div class="header-badge">IFEMACC 2026</div>
+    <h1 class="header-title">
+      Formulario de <span>Participación</span><br />& Solicitud de Servicios
+    </h1>
+    <p class="header-sub">
+      Completa este formulario para que nuestro equipo pueda preparar una propuesta personalizada para tu empresa. Recibirás respuesta en menos de 48 horas.
+    </p>
+  </div>
+</header>
+<div class="gold-strip"></div>
+
+<!-- FORM -->
+<div class="form-wrapper">
+  <form id="gribeer-form" novalidate>
+
+    <!-- 1. DATOS DE CONTACTO -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step">1</div>
+        <h2>Datos de Contacto</h2>
+      </div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div class="field">
+            <label>Nombre <span class="req">*</span></label>
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+          </div>
+          <div class="field">
+            <label>Apellidos <span class="req">*</span></label>
+            <input type="text" name="apellidos" placeholder="Tus apellidos" required />
+          </div>
+          <div class="field">
+            <label>Empresa / Razón Social <span class="req">*</span></label>
+            <input type="text" name="empresa" placeholder="Nombre de la empresa" required />
+          </div>
+          <div class="field">
+            <label>Cargo / Posición</label>
+            <input type="text" name="cargo" placeholder="Ej: Director de Compras" />
+          </div>
+          <div class="field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="empresa@correo.com" required />
+          </div>
+          <div class="field">
+            <label>Teléfono / WhatsApp <span class="req">*</span></label>
+            <input type="tel" name="telefono" placeholder="+34 600 000 000" required />
+          </div>
+          <div class="field">
+            <label>País <span class="req">*</span></label>
+            <select name="pais" required>
+              <option value="">Selecciona país...</option>
+              <option>España</option>
+              <option>Portugal</option>
+              <option>Francia</option>
+              <option>Alemania</option>
+              <option>Reino Unido</option>
+              <option>Italia</option>
+              <option>México</option>
+              <option>Estados Unidos</option>
+              <option>Argentina</option>
+              <option>Colombia</option>
+              <option>Chile</option>
+              <option>Brasil</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Ciudad</label>
+            <input type="text" name="ciudad" placeholder="Ciudad" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. TIPO DE NEGOCIO -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step">2</div>
+        <h2>Tipo de Negocio</h2>
+      </div>
+      <div class="card-body">
+        <div class="field full">
+          <label>¿Cómo defines tu negocio? <span class="req">*</span></label>
+          <div class="radio-group" id="tipo-negocio">
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn1" value="Distribuidor" required /><label for="tn1">🚚 Distribuidor</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn2" value="Importador" /><label for="tn2">📦 Importador</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn3" value="Mayorista" /><label for="tn3">🏭 Mayorista</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn4" value="Cadena de Retail" /><label for="tn4">🛒 Cadena de Retail</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn5" value="Restauración / Hostelería" /><label for="tn5">🍽️ Restauración / Hostelería</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn6" value="Organizador de Eventos" /><label for="tn6">🎪 Organizador de Eventos</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn7" value="E-commerce" /><label for="tn7">💻 E-commerce</label></div>
+            <div class="radio-pill"><input type="radio" name="tipo_negocio" id="tn8" value="Otro" /><label for="tn8">Otro</label></div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Canal principal de venta</label>
+            <select name="canal_venta">
+              <option value="">Selecciona...</option>
+              <option>On-trade (bares, restaurantes)</option>
+              <option>Off-trade (supermercados, tiendas)</option>
+              <option>Mixto (on + off trade)</option>
+              <option>Online</option>
+              <option>Eventos y festivales</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Número de puntos de venta activos</label>
+            <select name="puntos_venta">
+              <option value="">Selecciona...</option>
+              <option>1 – 10</option>
+              <option>11 – 50</option>
+              <option>51 – 200</option>
+              <option>201 – 500</option>
+              <option>+500</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PRODUCTOS DE INTERÉS -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step">3</div>
+        <h2>Productos de Interés</h2>
+      </div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div class="field">
+            <label>Categorías de producto <span class="req">*</span></label>
+            <div class="check-group">
+              <label class="check-row"><input type="checkbox" name="productos" value="Cerveza artesana" /><span class="check-box"></span><span class="check-label">Cerveza artesana</span></label>
+              <label class="check-row"><input type="checkbox" name="productos" value="Cerveza premium" /><span class="check-box"></span><span class="check-label">Cerveza premium</span></label>
+              <label class="check-row"><input type="checkbox" name="productos" value="Cerveza sin alcohol" /><span class="check-box"></span><span class="check-label">Cerveza sin alcohol</span></label>
+              <label class="check-row"><input type="checkbox" name="productos" value="Lager / Pilsner" /><span class="check-box"></span><span class="check-label">Lager / Pilsner</span></label>
+              <label class="check-row"><input type="checkbox" name="productos" value="Ale / IPA" /><span class="check-box"></span><span class="check-label">Ale / IPA</span></label>
+              <label class="check-row"><input type="checkbox" name="productos" value="Stout / Porter" /><span class="check-box"></span><span class="check-label">Stout / Porter</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Formato preferido</label>
+            <div class="check-group">
+              <label class="check-row"><input type="checkbox" name="formato" value="Barril (keg)" /><span class="check-box"></span><span class="check-label">🛢️ Barril (keg)</span></label>
+              <label class="check-row"><input type="checkbox" name="formato" value="Botella 33cl" /><span class="check-box"></span><span class="check-label">🍺 Botella 33cl</span></label>
+              <label class="check-row"><input type="checkbox" name="formato" value="Botella 50cl" /><span class="check-box"></span><span class="check-label">🍺 Botella 50cl</span></label>
+              <label class="check-row"><input type="checkbox" name="formato" value="Lata 33cl" /><span class="check-box"></span><span class="check-label">🥫 Lata 33cl</span></label>
+              <label class="check-row"><input type="checkbox" name="formato" value="Lata 50cl" /><span class="check-box"></span><span class="check-label">🥫 Lata 50cl</span></label>
+              <label class="check-row"><input type="checkbox" name="productos" value="Marca blanca / Privada" /><span class="check-box"></span><span class="check-label">🏷️ Marca blanca / Privada</span></label>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Volumen -->
+        <div class="field full">
+          <label>Volumen estimado mensual (hectolitros)</label>
+          <div class="slider-wrap">
+            <div class="slider-labels"><span>10 hl</span><span>250 hl</span><span>500 hl</span><span>+1.000 hl</span></div>
+            <input type="range" name="volumen_slider" id="volSlider" min="10" max="1000" step="10" value="100"
+              oninput="document.getElementById('volVal').textContent = this.value + ' hl'" />
+            <div class="slider-value" id="volVal">100 hl</div>
+          </div>
+          <input type="hidden" name="volumen_estimado" id="volHidden" value="100 hl" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SERVICIOS ADICIONALES -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step">4</div>
+        <h2>Servicios Adicionales</h2>
+      </div>
+      <div class="card-body">
+        <div class="field full">
+          <label>¿Qué servicios te interesan?</label>
+          <div class="radio-group">
+            <div class="radio-pill"><input type="radio" name="servicios" id="sv1" value="Distribución exclusiva" /><label for="sv1">Distribución exclusiva</label></div>
+            <div class="radio-pill"><input type="radio" name="servicios" id="sv2" value="Marca blanca / Private label" /><label for="sv2">Marca blanca</label></div>
+            <div class="radio-pill"><input type="radio" name="servicios" id="sv3" value="Catas y formación" /><label for="sv3">Catas & formación</label></div>
+            <div class="radio-pill"><input type="radio" name="servicios" id="sv4" value="Patrocinio de eventos" /><label for="sv4">Patrocinio de eventos</label></div>
+            <div class="radio-pill"><input type="radio" name="servicios" id="sv5" value="Packaging personalizado" /><label for="sv5">Packaging personalizado</label></div>
+            <div class="radio-pill"><input type="radio" name="servicios" id="sv6" value="Logística y transporte" /><label for="sv6">Logística & transporte</label></div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="grid-2">
+          <div class="field">
+            <label>¿Cuándo quieres comenzar?</label>
+            <select name="inicio">
+              <option value="">Selecciona...</option>
+              <option>Inmediatamente (1 mes)</option>
+              <option>A corto plazo (1–3 meses)</option>
+              <option>A medio plazo (3–6 meses)</option>
+              <option>A largo plazo (+6 meses)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Presupuesto mensual estimado</label>
+            <select name="presupuesto">
+              <option value="">Selecciona...</option>
+              <option>Menos de 5.000 €</option>
+              <option>5.000 € – 15.000 €</option>
+              <option>15.000 € – 50.000 €</option>
+              <option>50.000 € – 100.000 €</option>
+              <option>Más de 100.000 €</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. DETALLES IFEMACC 2026 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step">5</div>
+        <h2>IFEMACC 2026 – Detalles de Participación</h2>
+      </div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div class="field">
+            <label>¿Estarás presente en IFEMACC 2026?</label>
+            <div class="radio-group">
+              <div class="radio-pill"><input type="radio" name="asistencia_ifema" id="as1" value="Sí, con stand propio" /><label for="as1">Sí, con stand</label></div>
+              <div class="radio-pill"><input type="radio" name="asistencia_ifema" id="as2" value="Sí, como visitante" /><label for="as2">Como visitante</label></div>
+              <div class="radio-pill"><input type="radio" name="asistencia_ifema" id="as3" value="No" /><label for="as3">No</label></div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Número de stand (si aplica)</label>
+            <input type="text" name="numero_stand" placeholder="Ej: Hall 6 / Stand B-204" />
+          </div>
+          <div class="field full">
+            <label>¿Te gustaría reunirte con el equipo Gribeer durante IFEMACC?</label>
+            <div class="radio-group">
+              <div class="radio-pill"><input type="radio" name="reunion_ifema" id="re1" value="Sí, por favor" /><label for="re1">Sí, solicito reunión</label></div>
+              <div class="radio-pill"><input type="radio" name="reunion_ifema" id="re2" value="Prefiero reunión online" /><label for="re2">Prefiero online</label></div>
+              <div class="radio-pill"><input type="radio" name="reunion_ifema" id="re3" value="No por ahora" /><label for="re3">No por ahora</label></div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Fecha preferida de reunión</label>
+            <input type="date" name="fecha_reunion" />
+          </div>
+          <div class="field">
+            <label>Horario preferido</label>
+            <select name="horario_reunion">
+              <option value="">Selecciona...</option>
+              <option>Mañana (9:00 – 12:00)</option>
+              <option>Mediodía (12:00 – 14:00)</option>
+              <option>Tarde (15:00 – 18:00)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. COMENTARIOS -->
+    <div class="card">
+      <div class="card-header">
+        <div class="step">6</div>
+        <h2>Comentarios & Requisitos Específicos</h2>
+      </div>
+      <div class="card-body">
+        <div class="field full">
+          <label>¿Hay algo específico que quieras trasladarnos?</label>
+          <textarea name="comentarios" placeholder="Escribe aquí tus preguntas, requisitos especiales, territorios de exclusividad que te interesan, cualquier información adicional que quieras que valoremos..."></textarea>
+        </div>
+        <hr class="divider" />
+        <div class="field full">
+          <label>¿Cómo nos conociste?</label>
+          <select name="como_conociste">
+            <option value="">Selecciona...</option>
+            <option>Email / Newsletter</option>
+            <option>LinkedIn</option>
+            <option>Instagram / Redes Sociales</option>
+            <option>Recomendación de un contacto</option>
+            <option>Feria / Evento anterior</option>
+            <option>Búsqueda en Google</option>
+            <option>Prensa / Publicación</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <hr class="divider" />
+        <div class="field full">
+          <label class="check-row" style="margin-top:4px;">
+            <input type="checkbox" name="acepta_privacidad" required />
+            <span class="check-box"></span>
+            <span class="check-label" style="font-size:13px;">He leído y acepto la <a href="https://gribeer.com/en/privacy-policy/" target="_blank" style="color:var(--gold);font-weight:600;">Política de Privacidad</a> de Gribeer y consiento el tratamiento de mis datos para recibir información comercial. <span class="req">*</span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-area">
+      <button type="submit" class="btn-submit">Enviar Solicitud →</button>
+      <p class="form-note">* Campos obligatorios. Tu información está protegida y nunca se compartirá con terceros.</p>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS -->
+  <div id="success-msg">
+    <div class="check-icon">✓</div>
+    <h3>¡Solicitud enviada con éxito!</h3>
+    <p>Gracias por tu interés en Gribeer.<br />Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo en menos de <strong style="color:var(--gold);">48 horas</strong>.<br /><br />Mientras tanto, puedes visitar <a href="https://gribeer.com/en/" target="_blank">gribeer.com</a> para conocer más sobre nuestros productos.</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <a href="https://gribeer.com/en/" target="_blank">Gribeer</a> – Todos los derechos reservados. IFEMACC 2026.</p>
+</footer>
+
+<script>
+  // Sync slider → hidden input
+  const slider = document.getElementById('volSlider');
+  const hidden = document.getElementById('volHidden');
+  slider.addEventListener('input', () => { hidden.value = slider.value + ' hl'; });
+
+  // Form submit
+  document.getElementById('gribeer-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const btn  = form.querySelector('.btn-submit');
+
+    // Basic validation
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      el.style.borderColor = '';
+      if (el.type === 'checkbox' && !el.checked) {
+        valid = false;
+      } else if (el.type !== 'checkbox' && !el.value.trim()) {
+        el.style.borderColor = '#e53e3e';
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      alert('Por favor, completa todos los campos obligatorios.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    // Build payload
+    const data = {};
+    const fd   = new FormData(form);
+
+    // Multi-checkbox fields
+    const multiFields = {};
+    form.querySelectorAll('input[type="checkbox"][name="productos"]:checked').forEach(cb => {
+      if (!multiFields.productos) multiFields.productos = [];
+      multiFields.productos.push(cb.value);
+    });
+    form.querySelectorAll('input[type="checkbox"][name="formato"]:checked').forEach(cb => {
+      if (!multiFields.formato) multiFields.formato = [];
+      multiFields.formato.push(cb.value);
+    });
+
+    fd.forEach((v, k) => { if (k !== 'productos' && k !== 'formato') data[k] = v; });
+    if (multiFields.productos) data.productos = multiFields.productos.join(', ');
+    if (multiFields.formato)   data.formato   = multiFields.formato.join(', ');
+
+    data.timestamp = new Date().toISOString();
+    data.fuente    = 'Formulario IFEMACC 2026';
+
+    try {
+      await fetch('https://1-n8n.2e26n3.easypanel.host/webhook-test/9ad22ae6-d655-4072-8d7f-d78dce32348f', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      form.style.display = 'none';
+      const msg = document.getElementById('success-msg');
+      msg.style.display = 'block';
+      msg.scrollIntoView({ behavior: 'smooth' });
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Enviar Solicitud →';
+      alert('Error al enviar el formulario. Por favor, inténtalo de nuevo o contacta con nosotros directamente.');
+    }
+  });
+</script>
+
+</body>
+</html>
